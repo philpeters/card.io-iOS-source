@@ -66,6 +66,7 @@
 /// Alter the card guide (bracket) color. Opaque colors recommended.
 /// Defaults to nil; if nil, will use card.io green.
 @property(nonatomic, retain, readwrite) UIColor *guideColor;
+@property(nonatomic, retain, readwrite) UIColor *doneButtonColor;
 
 /// If YES, don't have the user confirm the scanned card, just return the results immediately.
 /// Defaults to NO.

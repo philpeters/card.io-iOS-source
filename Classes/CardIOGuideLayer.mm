@@ -18,7 +18,7 @@
 #pragma mark - Colors
 
 #define kStandardMinimumBoundsWidth 300.0f
-#define kStandardLineWidth 12.0f
+#define kStandardLineWidth 2.0f
 #define kStandardCornerSize 50.0f
 #define kAdjustFudge 0.2f  // Because without this, we see a mini gap between edge path and corner path.
 
@@ -155,6 +155,8 @@ typedef enum {
   }
   return self;
 }
+
+
 
 + (CGPathRef)newPathFromPoint:(CGPoint)firstPoint toPoint:(CGPoint)secondPoint {
   CGMutablePathRef path = CGPathCreateMutable();

@@ -20,8 +20,8 @@
 @property(nonatomic, strong, readwrite) UIImageView *cardView;
 @property(nonatomic, assign, readwrite) CGPoint cardImageCenter;
 @property(nonatomic, assign, readwrite) CGSize cardImageSize;
-@property(nonatomic, strong, readwrite) UIView *floatingCardView;
-@property(nonatomic, strong, readwrite) UIWindow *floatingCardWindow;
+//@property(nonatomic, strong, readwrite) UIView *floatingCardView;
+//@property(nonatomic, strong, readwrite) UIWindow *floatingCardWindow;
 @property(nonatomic, strong, readwrite) UIWindow *priorKeyWindow;
 @property(nonatomic, assign, readwrite) BOOL manualEntry;
 @property(nonatomic, assign, readwrite) BOOL collectExpiry;

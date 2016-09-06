@@ -99,6 +99,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.navigationController.navigationBar.opaque = true;
+  self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

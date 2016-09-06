@@ -55,11 +55,10 @@
 @property(nonatomic, assign, readwrite) CGSize notificationSize;
 @property(nonatomic, strong, readwrite) CardIOContext *context;
 @property(nonatomic, assign, readwrite) CardIOCreditCardType cardTypeForLogo;
-@property(nonatomic, assign, readwrite) CGRect relevantViewFrame;
-@property(nonatomic, assign, readwrite) CGFloat oldHeight;
 @property(nonatomic, weak, readwrite) UITextField *activeTextField;
 @property(nonatomic, strong, readwrite) UIView *leftTableBorderForIOS7;
 @property(nonatomic, strong, readwrite) UIView *rightTableBorderForIOS7;
+@property (nonatomic, strong, readwrite) UIButton * doneButton;
 
 @end
 
@@ -85,39 +84,19 @@
   return self;
 }
 
-- (void)calculateRelevantViewFrame {
-  self.relevantViewFrame = self.view.bounds;
-
-  if (!iOS_7_PLUS) {
-    // On iOS 7, setting 'edgesForExtendedLayout = UIRectEdgeNone' takes care of the offset
-    if (self.navigationController.navigationBar.translucent) {
-      CGRect relevantViewFrame = self.view.bounds;
-      CGFloat barsHeight = NavigationBarHeightForCurrentOrientation(self.navigationController);
-      if (self.navigationController.modalPresentationStyle == UIModalPresentationFullScreen && !self.statusBarHidden) {
-        barsHeight += kStatusBarHeight;
-      }
-      relevantViewFrame.origin.y += barsHeight;
-      relevantViewFrame.size.height -= barsHeight;
-      self.relevantViewFrame = relevantViewFrame;
-    }
-  }
-}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  if (iOS_7_PLUS) {
+  self.navigationController.navigationBar.opaque = true;
+  self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-  }
-  else {
-    self.wantsFullScreenLayout = YES;
-  }
-
-  [self calculateRelevantViewFrame];
 
   CardIOPaymentViewController *pvc = (CardIOPaymentViewController *)self.navigationController;
-  self.title = CardIOLocalizedString(@"entry_title", self.context.languageOrLocale); // Enter card info
+  self.title = @"Card Details";
+  //CardIOLocalizedString(@"entry_title", self.context.languageOrLocale); // Enter card info
 
   // Need to set up the navItem here, because the OS calls the accessor before all the info needed to build it is available.
 
@@ -129,52 +108,58 @@
   if(showCancelButton) {
     NSString *cancelText = CardIOLocalizedString(@"cancel", self.context.languageOrLocale); // Cancel
     // show the cancel button if we've gone directly to manual entry.
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cancelText style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cancelText style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
   } else {
     // Show fake "back" button, since real back button takes us back to the animation view, not back to the camera
-    NSString *cameraText = CardIOLocalizedString(@"camera", self.context.languageOrLocale); // Camera
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cameraText style:UIBarButtonItemStyleBordered target:self action:@selector(popToTop)];
+//    NSString *cameraText = CardIOLocalizedString(@"camera", self.context.languageOrLocale); // Camera
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cameraText style:UIBarButtonItemStyleBordered target:self action:@selector(popToTop)];
   }
 
   NSString *cardInfoText = CardIOLocalizedString(@"card_info", self.context.languageOrLocale); // Card Info
-  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cardInfoText style:UIBarButtonItemStyleBordered target:nil action:nil];
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:cardInfoText style:UIBarButtonItemStylePlain target:nil action:nil];
 
-  NSString *completionButtonTitle = CardIOLocalizedString(@"done", self.context.languageOrLocale); // Done
-
-  UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:completionButtonTitle
-                                                                 style:UIBarButtonItemStyleDone
-                                                                target:self
-                                                                action:@selector(done)];
-  self.navigationItem.rightBarButtonItem = doneButton;
   self.navigationItem.rightBarButtonItem.enabled = NO;
 
+  self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  self.doneButton.frame = CGRectMake(0, 0, self.view.frame.size.width, 44);
+  [self.doneButton setTitle:@"Next" forState:UIControlStateNormal];
+  [self.doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+  [self.doneButton addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
+  [self.doneButton setBackgroundColor: [UIColor redColor]];
+  self.doneButton.enabled = false;
+  
   self.collectExpiry = pvc.collectExpiry;
   self.collectCVV = pvc.collectCVV;
   self.collectPostalCode = pvc.collectPostalCode;
   self.restrictPostalCodeToNumericOnly = pvc.restrictPostalCodeToNumericOnly;
   self.collectCardholderName = pvc.collectCardholderName;
 
-  self.scrollView = [[UIScrollView alloc] initWithFrame:self.relevantViewFrame];
+  self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
 
   if(!self.manualEntry) {
     self.cardView = [[UIImageView alloc] initWithImage:self.cardImage];
-    self.cardView.bounds = CGRectZeroWithSize(CGSizeMake((CGFloat)ceil(self.floatingCardView.bounds.size.width),
-                                                         (CGFloat)ceil(self.floatingCardView.bounds.size.height)));
-    self.cardView.contentMode = UIViewContentModeScaleAspectFit;
+//    self.cardView.bounds = CGRectZeroWithSize(CGSizeMake((CGFloat)ceil(self.floatingCardView.bounds.size.width),
+//                                                         (CGFloat)ceil(self.floatingCardView.bounds.size.height)));
+    self.cardView.contentMode = UIViewContentModeScaleAspectFill;
     self.cardView.backgroundColor = kColorViewBackground;
-    self.cardView.layer.cornerRadius = ((CGFloat) 9.0f) * (self.cardView.bounds.size.width / ((CGFloat) 300.0f)); // matches the card, adjusted for view size. (view is ~300 px wide on phone.)
     self.cardView.layer.masksToBounds = YES;
-    self.cardView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.cardView.layer.borderWidth = 2.0f;
+//    self.cardView.layer.borderColor = [UIColor grayColor].CGColor;
+//    self.cardView.layer.borderWidth = 2.0f;
 
-    self.cardView.hidden = YES;
+    self.cardView.hidden = NO;
     [self.scrollView addSubview:self.cardView];
   }
 
   self.tableView = [[UITableView alloc] initWithFrame:self.scrollView.bounds style:UITableViewStyleGrouped];
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
   self.tableView.scrollEnabled = NO;
-  self.tableView.hidden = YES;
+  if (!self.manualEntry) {
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 0.01f)];
+
+  }
+  
+  UIView * footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.01)];
+  self.tableView.tableFooterView = footerView;
 
   // On iOS 7, remove the edge inset from the table for a more consistent appearance
   // when there are multiple inputs in a row.
@@ -392,40 +377,22 @@
   }
 
   [self.view addSubview:self.scrollView];
+  [self.view addSubview:self.doneButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  if ([UIApplication sharedApplication].statusBarOrientation != (UIInterfaceOrientation)[UIDevice currentDevice].orientation) {
-    // Force interface to rotate to match current device orientation, following portrait-only camera view.
-    [[NSNotificationCenter defaultCenter] postNotificationName:UIDeviceOrientationDidChangeNotification object:nil];
-  }
-
   [super viewWillAppear:animated];
 
-  if (self.navigationController.modalPresentationStyle == UIModalPresentationFullScreen && !self.statusBarHidden) {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-    if (iOS_7_PLUS) {
-      [self setNeedsStatusBarAppearanceUpdate];
-    }
-  }
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillShowNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillHideNotification object:nil];
 
-  if (!self.context.keepStatusBarStyle) {
-    if (iOS_7_PLUS) {
-      [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    }
-    else {
-      [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    }
-  }
-
-  [self.navigationController setNavigationBarHidden:NO animated:animated];
+  [self advanceToNextEmptyFieldFrom:nil];
+  [self validate];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillShowNotification object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillMove:) name:UIKeyboardWillHideNotification object:nil];
 
   if(self.manualEntry) {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -458,114 +425,20 @@
                                                object:self.cardholderNameTextField];
   }
 
-  [self layoutForCurrentOrientation];
-
-  if (self.floatingCardView) {
-    if (self.cardView) {
-      CGRect  newCardViewFrame = self.cardView.frame; // as set above by [self layoutForCurrentOrientation]
-      CGRect  cardFrameInView = [self.view convertRect:self.floatingCardView.frame fromView:self.floatingCardView.superview];
-      self.cardView.frame = cardFrameInView;  // start the animation with the card appearing as in the CardIOTransitionView
-
-      self.cardView.hidden = NO;
-      self.floatingCardWindow.hidden = YES;
-      self.floatingCardView = nil;
-      self.floatingCardWindow = nil;
-      self.priorKeyWindow = nil;
-
-      if ([self.tableView numberOfRowsInSection:0] > 0) {
-        self.tableView.alpha = 0;
-        self.tableView.hidden = NO;
-        [self showTableBorders:NO];
-      }
-
-      [UIView animateWithDuration:0.4
-                       animations:^{
-                         self.cardView.frame = newCardViewFrame;
-                         self.tableView.alpha = 1;
-                       }
-                       completion:^(BOOL finished) {
-                         [self showTableBorders:YES];
-                         int64_t delay = [self isWideScreenMode] ? (int64_t)(0.2f * NSEC_PER_SEC) : 0;
-                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay), dispatch_get_main_queue(), ^(void){
-                           [self advanceToNextEmptyFieldFrom:nil];
-                         });
-                       }];
-    }
-    else {
-      // It's slightly nicer to animate this transition from floating card view to table view,
-      // but in widescreen mode there's a simultaneous viewcontroller rotation involved that
-      // makes things messy. (The floating card view rotates to portrait mode before fading away.)
-      if ([self isWideScreenMode]) {
-        self.tableView.alpha = 1;
-        self.tableView.hidden = NO;
-        [self showTableBorders:YES];
-        self.floatingCardWindow.alpha = 0;
-        self.floatingCardWindow.hidden = YES;
-        self.floatingCardView = nil;
-        self.floatingCardWindow = nil;
-        self.priorKeyWindow = nil;
-      }
-      else {
-        self.tableView.alpha = 0;
-        self.tableView.hidden = NO;
-        [self showTableBorders:NO];
-
-        [UIView animateWithDuration:0.4
-                         animations:^{
-                           self.tableView.alpha = 1;
-                           self.floatingCardWindow.alpha = 0;
-                         }
-                         completion:^(BOOL finished) {
-                           [self showTableBorders:YES];
-                           self.floatingCardWindow.hidden = YES;
-                           self.floatingCardView = nil;
-                           self.floatingCardWindow = nil;
-                           self.priorKeyWindow = nil;
-                         }];
-      }
-
-      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
-        [self advanceToNextEmptyFieldFrom:nil];
-      });
-    }
-  }
-  else {
-    self.tableView.alpha = 1;
-    self.tableView.hidden = NO;
-    [self showTableBorders:YES];
-    [self advanceToNextEmptyFieldFrom:nil];
-  }
-
   [self validate];
 }
 
 - (void)keyboardWillMove:(NSNotification *)inputViewNotification {
-  CGRect inputViewFrame = [[[inputViewNotification userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+  CGRect keyboardFrame = [[[inputViewNotification userInfo] valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 
-  CGRect inputViewFrameInView = [self.view convertRect:inputViewFrame fromView:nil];
-  CGRect intersection = CGRectIntersection(self.scrollView.frame, inputViewFrameInView);
+//  CGRect keyboardFrameInView = [self.view convertRect:keyboardFrame fromView:nil];
+//  CGRect intersection = CGRectIntersection(self.scrollView.frame, keyboardFrameInView);
 
-  UIEdgeInsets ei = UIEdgeInsetsMake(0.0, 0.0, intersection.size.height, 0.0);
+  UIEdgeInsets ei = UIEdgeInsetsMake(0.0, 0.0, keyboardFrame.size.height + self.doneButton.frame.size.height, 0.0);
   self.scrollView.scrollIndicatorInsets = ei;
   self.scrollView.contentInset = ei;
 
-  CGRect scrollTo = [self.tableView rectForSection:0];
-  scrollTo = [self.scrollView convertRect:scrollTo fromView:self.tableView];
-  if (scrollTo.size.height <= inputViewFrameInView.origin.y) {
-    [self.scrollView scrollRectToVisible:scrollTo animated:YES];
-  }
-  else {
-    scrollTo.size.height = 1;
-    for (NSUInteger index = 0; index < self.visibleTextFields.count; index++) {
-      if ([self.visibleTextFields[index] isEditing]) {
-        UITextField *textField = ((UITextField *)self.visibleTextFields[index]);
-        scrollTo = textField.bounds;
-        scrollTo = [self.scrollView convertRect:scrollTo fromView:textField];
-        break;
-      }
-    }
-    [self.scrollView scrollRectToVisible:scrollTo animated:YES];
-  }
+  [self.view setNeedsLayout];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -601,11 +474,6 @@
 
 #pragma mark - orientation-based subview layout
 
-- (BOOL)isWideScreenMode {
-  return ((self.navigationController.modalPresentationStyle == UIModalPresentationFullScreen)
-          && UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]));
-}
-
 - (void)showTableBorders:(BOOL)showTableBorders {
   if (iOS_7_PLUS) {
     self.leftTableBorderForIOS7.hidden = !showTableBorders;
@@ -613,163 +481,76 @@
   }
 }
 
-- (void)layoutForCurrentOrientation {
-  self.oldHeight = self.view.bounds.size.height;
+- (void) viewWillLayoutSubviews {
+  [super viewWillLayoutSubviews];
 
-  [self calculateRelevantViewFrame];
-  self.scrollView.frame = self.relevantViewFrame;
+//  self.scrollView.frame = self.view.bounds;
+  
+  // Calculate height
+  CGFloat availableHeight = self.view.frame.size.height - self.scrollView.contentInset.bottom;
 
   if (self.cardView) {
+    CGFloat imageAvailableHeight = availableHeight - self.tableView.contentSize.height;
+
     CGRect cardViewFrame = self.cardView.frame;
-    CGRect tableViewFrame = self.tableView.frame;
+    CGRect tableViewFrame = CGRectMake(0, 0, self.scrollView.bounds.size.width, self.tableView.contentSize.height);
+    
     BOOL showTableView = ([self.tableView numberOfRowsInSection:0] > 0);
 
-    if ([self isWideScreenMode]) {
-      cardViewFrame.size.width = (CGFloat)floor(MAX(self.scrollView.bounds.size.width, self.scrollView.bounds.size.height) * kLandscapeZoomedInCardImageSizePercent);
-      cardViewFrame.size.height = (CGFloat)floor(self.cardImage.size.height * (cardViewFrame.size.width / self.cardImage.size.width));
-      if (!showTableView) {
-        cardViewFrame.size.width *= 1.5;
-        cardViewFrame.size.height *= 1.5;
-      }
-    }
-    else {
-      cardViewFrame.size.width = (CGFloat)floor(self.scrollView.bounds.size.width * kPortraitZoomedInCardImageSizePercent);
-      cardViewFrame.size.height = (CGFloat)floor(self.cardImage.size.height * (cardViewFrame.size.width / self.cardImage.size.width));
-    }
+    cardViewFrame.size.width = (CGFloat)floor(self.scrollView.bounds.size.width * kPortraitZoomedInCardImageSizePercent);
+    cardViewFrame.size.height = (CGFloat)floor(self.cardImage.size.height * (cardViewFrame.size.width / self.cardImage.size.width));
 
     if (showTableView) {
-      if ([self isWideScreenMode]) {
-        cardViewFrame.origin.x = kCardPadding;
-        cardViewFrame.origin.y = kCardPadding;
-
-        tableViewFrame.size.width = (CGFloat)(self.scrollView.bounds.size.width - cardViewFrame.size.width - 3 * kCardPadding);
-        tableViewFrame.size.height = self.scrollView.bounds.size.height;
-        tableViewFrame.origin.x = CGRectGetMaxX(self.scrollView.bounds) - tableViewFrame.size.width - kCardPadding;
-
-        if (iOS_7_PLUS) {
-          NSInteger lastSection = [self.tableView numberOfSections] - 1;
-          NSInteger lastRow = [self.tableView numberOfRowsInSection:lastSection] - 1;
-          UITableViewCell *firstCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-          UITableViewCell *lastCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:lastRow inSection:lastSection]];
-          tableViewFrame.origin.y = kCardPadding - firstCell.frame.origin.y;
-
-          CGRect leftTableBorderFrame = self.leftTableBorderForIOS7.frame;
-          leftTableBorderFrame.origin.x = tableViewFrame.origin.x - 0.5f;
-          leftTableBorderFrame.origin.y = tableViewFrame.origin.y + firstCell.frame.origin.y;
-          leftTableBorderFrame.size.height = lastCell.frame.origin.y + lastCell.frame.size.height - firstCell.frame.origin.y + 0.5f;
-          leftTableBorderFrame.size.width = 0.5f;
-          self.leftTableBorderForIOS7.frame = leftTableBorderFrame;
-
-          CGRect rightTableBorderFrame = leftTableBorderFrame;
-          rightTableBorderFrame.origin.x = tableViewFrame.origin.x + tableViewFrame.size.width;
-          self.rightTableBorderForIOS7.frame = rightTableBorderFrame;
-        }
-        else {
-          tableViewFrame.origin.y = 0;
-        }
+      cardViewFrame.origin.x = (CGFloat)floor((self.scrollView.bounds.size.width - cardViewFrame.size.width) / 2);
+      
+      //if image to big crop it
+      if (imageAvailableHeight < cardViewFrame.size.height) {
+        cardViewFrame.origin.y = 0;
+        cardViewFrame.size.height = imageAvailableHeight;
+        self.cardView.layer.cornerRadius = 0;
+        tableViewFrame.origin.y = imageAvailableHeight;
+      } else {
+        cardViewFrame.origin.y = MIN(cardViewFrame.size.height + 20, imageAvailableHeight) - cardViewFrame.size.height;
+        self.cardView.layer.cornerRadius = ((CGFloat) 9.0f) * (self.cardView.bounds.size.width / ((CGFloat) 300.0f)); // matches the card, adjusted for view size. (view is ~300 px wide on phone.)
+        tableViewFrame.origin.y = MIN(imageAvailableHeight, CGRectGetMaxY(cardViewFrame) + 20);
       }
-      else {
-        cardViewFrame.origin.x = (CGFloat)floor((self.scrollView.bounds.size.width - cardViewFrame.size.width) / 2);
-        cardViewFrame.origin.y = (CGFloat)floor(kCardPadding / 2);
 
-        tableViewFrame = self.scrollView.bounds;
-        tableViewFrame.origin.y = CGRectGetMaxY(cardViewFrame);
-
-        if (iOS_7_PLUS) {
-          CGRect tableBorderFrame = CGRectMake(0, 0, 0, 0);
-          self.leftTableBorderForIOS7.frame = tableBorderFrame;
-          self.rightTableBorderForIOS7.frame = tableBorderFrame;
-        }
-      }
+//      tableViewFrame = CGRectMake(0, CGRectGetMaxY(cardViewFrame) + (imageAvailableHeight > cardViewFrame.size.height + 20 ? 20 : 0), self.scrollView.bounds.size.width, self.tableView.contentSize.height);
+//
+      CGRect tableBorderFrame = CGRectMake(0, 0, 0, 0);
+      self.leftTableBorderForIOS7.frame = tableBorderFrame;
+      self.rightTableBorderForIOS7.frame = tableBorderFrame;
+    
     }
     else {
       cardViewFrame.origin.x = (CGFloat)floor((self.scrollView.frame.size.width - cardViewFrame.size.width) / 2);
-      cardViewFrame.origin.y = (CGFloat)floor((self.scrollView.frame.size.height - cardViewFrame.size.height) / 3);
+      cardViewFrame.origin.y = 30;
+        self.cardView.layer.cornerRadius = ((CGFloat) 9.0f) * (self.cardView.bounds.size.width / ((CGFloat) 300.0f)); // matches the card, adjusted for view size. (view is ~300 px wide on phone.)
+      
       tableViewFrame = CGRectZero;
     }
-
+    
     self.cardView.frame = cardViewFrame;
     self.tableView.frame = tableViewFrame;
 
     self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width,
-                                             MAX(self.tableView.frame.origin.y + CGRectGetMaxY([self.tableView rectForSection:0]), CGRectGetMaxY(self.cardView.frame)));
+                                             MAX(CGRectGetMaxY(self.tableView.frame), CGRectGetMaxY(self.cardView.frame)));
   }
   else {
-    CGRect tableViewFrame;
-
-    if ([self isWideScreenMode]) {
-      CGFloat tableWidth = MAX((CGFloat)floor(self.scrollView.bounds.size.width / 2), 400);
-
-      tableViewFrame.size.width = tableWidth;
-      tableViewFrame.size.height = self.scrollView.bounds.size.height;
-      tableViewFrame.origin.x = (CGFloat)floor((self.scrollView.bounds.size.width - tableWidth) / 2);
-      tableViewFrame.origin.y = 0;
-
-      if (iOS_7_PLUS) {
-        NSInteger lastSection = [self.tableView numberOfSections] - 1;
-        NSInteger lastRow = [self.tableView numberOfRowsInSection:lastSection] - 1;
-        UITableViewCell *firstCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        UITableViewCell *lastCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:lastRow inSection:lastSection]];
-
-        CGRect leftTableBorderFrame = self.leftTableBorderForIOS7.frame;
-        leftTableBorderFrame.origin.x = tableViewFrame.origin.x - 0.5f;
-        leftTableBorderFrame.origin.y = tableViewFrame.origin.y + firstCell.frame.origin.y;
-        leftTableBorderFrame.size.height = lastCell.frame.origin.y + lastCell.frame.size.height - firstCell.frame.origin.y;
-        leftTableBorderFrame.size.width = 0.5f;
-        self.leftTableBorderForIOS7.frame = leftTableBorderFrame;
-
-        CGRect rightTableBorderFrame = leftTableBorderFrame;
-        rightTableBorderFrame.origin.x = tableViewFrame.origin.x + tableViewFrame.size.width;
-        self.rightTableBorderForIOS7.frame = rightTableBorderFrame;
-      }
-    }
-    else {
-      tableViewFrame = self.scrollView.bounds;
-
-      if (iOS_7_PLUS) {
-        CGRect tableBorderFrame = CGRectMake(0, 0, 0, 0);
-        self.leftTableBorderForIOS7.frame = tableBorderFrame;
-        self.rightTableBorderForIOS7.frame = tableBorderFrame;
-      }
-    }
-
-    self.tableView.frame = tableViewFrame;
-
+    self.tableView.frame = CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.contentSize.height);
     self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width,
-                                             self.tableView.frame.origin.y + CGRectGetMaxY([self.tableView rectForSection:0]));
+                                             self.tableView.frame.origin.y +
+                                              self.tableView.contentSize.height);
   }
+  
+  if (self.scrollView.contentInset.bottom > 0) {
+    self.doneButton.frame = CGRectMake(0, self.view.frame.size.height - self.scrollView.contentInset.bottom , self.view.frame.size.width, self.doneButton.frame.size.height);
+  } else {
+    self.doneButton.frame = CGRectMake(0, MAX(CGRectGetMaxY(self.tableView.frame), CGRectGetMaxY(self.cardView.frame) + 20), self.view.frame.size.width, self.doneButton.frame.size.height);
+  }
+  
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-  self.activeTextField = nil;
-  for(UITextField *textField in self.visibleTextFields) {
-    if ([textField isFirstResponder]) {
-      self.activeTextField = textField;
-      [textField resignFirstResponder];
-      break;
-    }
-  }
-
-  [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-  [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-
-  if (self.view.bounds.size.height != self.oldHeight) {
-    [self showTableBorders:NO];
-
-    [UIView animateWithDuration:0.4
-                     animations:^{
-                       [self layoutForCurrentOrientation];
-                     }
-                     completion:^(BOOL finished) {
-                       [self showTableBorders:YES];
-                     }];
-  }
-
-  [self.activeTextField becomeFirstResponder];
-}
 
 #pragma mark - Status bar preferences (iOS 7)
 
@@ -778,7 +559,7 @@
 }
 
 - (BOOL)prefersStatusBarHidden {
-  return self.statusBarHidden;
+  return NO;//self.statusBarHidden;
 }
 
 #pragma mark -
@@ -793,10 +574,6 @@
     }
   }
 
-  if (iOS_7_PLUS) {
-    // On iOS 7, looks better if we start sliding away the nav bar prior to transitioning to camera-view.
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-  }
 
   ((CardIOPaymentViewController *)self.navigationController).currentViewControllerIsDataEntry = NO;
   ((CardIOPaymentViewController *)self.navigationController).initialInterfaceOrientationForViewcontroller = [UIApplication sharedApplication].statusBarOrientation;
@@ -997,7 +774,9 @@
   BOOL cardholderNameIsValid = !self.cardholderNameTextField || [CardIOCardholderNameTextFieldDelegate isValidCardholderName:self.cardInfo.cardholderName];
   BOOL isValid = numberIsValid && expiryIsValid && cvvIsValid && postalCodeIsValid && cardholderNameIsValid;
   self.navigationItem.rightBarButtonItem.enabled = isValid;
-
+  self.doneButton.enabled = isValid;
+  [self.doneButton setBackgroundColor:isValid ? [UIColor colorWithRed:0 green:118.0f/255 blue:1 alpha:1] : [UIColor colorWithRed:166.0f/255 green:171.0f/255 blue:177.0f/255 alpha:1]];
+  
   return isValid;
 }
 

@@ -64,6 +64,7 @@
     contents = CGSizeMake(kPortraitSampleWidth, kPortraitSampleHeight);
   }
   CGRect contentsRect = aspectFit(contents, size);
+  contentsRect = CGRectMake(0, 0, size.width, size.width * 640/480);
   return CGRectFlooredToNearestPixel(contentsRect);
 }
 
@@ -123,9 +124,9 @@
     [self addSubview:self.guideLayerLabel];
 
     // Shutter view for shutter-open animation
-    _shutter = [[CardIOShutterView alloc] initWithFrame:CGRectZero];
-    [self.shutter setOpen:NO animated:NO duration:0];
-    [self addSubview:self.shutter];
+//    _shutter = [[CardIOShutterView alloc] initWithFrame:CGRectZero];
+//    [self.shutter setOpen:NO animated:NO duration:0];
+//    [self addSubview:self.shutter];
 
     // Tap-to-refocus support
     if([self.videoStream hasAutofocus]) {
