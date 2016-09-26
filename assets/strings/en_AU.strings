@@ -6,14 +6,14 @@
 "deactivate_flash" = "Turn flash off.";
 "done" = "Done";
 "entry_card_number" = "Card Number";
-"entry_cvv" = "CVV";
+"entry_cvv" = "%@ Digit CVV";
 "entry_expires" = "Expires";
 "entry_number" = "Number";
 "entry_title" = "Card";
 "entry_postal_code" = "Postcode";
 "entry_cardholder_name" = "Cardholder Name";
-"expires_placeholder" = "MM/YY";
-"manual_entry" = "Enter manually";
+"expires_placeholder" = "MM/YY Expiry";
+"manual_entry" = "Enter Manually";
 "ok" = "OK";
 "paypal_logo" = "PayPal";
 "scan_guide" = "Hold card here.\nIt will scan automatically.";

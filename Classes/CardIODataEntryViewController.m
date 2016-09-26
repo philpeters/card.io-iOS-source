@@ -213,7 +213,7 @@
     BOOL bothInOneRow = NO;
     if (collectBoth) {
       NSString *expiryText = CardIOLocalizedString(@"entry_expires", self.context.languageOrLocale); // Expires
-      NSString* cvvText = CardIOLocalizedString(@"entry_cvv", self.context.languageOrLocale); // CVV
+      NSString* cvvText = [NSString stringWithFormat:CardIOLocalizedString(@"entry_cvv", self.context.languageOrLocale), self.cardInfo.cardType ? [NSNumber numberWithInteger:self.cvvLength] : @"3-4"]; // CVV
       CGFloat fieldWidthForTwoFieldsPerRow = kMinimumDefaultRowWidth / 2;
       bothInOneRow = ([multiFieldRow textFitsInMultiFieldForLabel:@"" forPlaceholder:expiryText forFieldWidth:fieldWidthForTwoFieldsPerRow] &&
                       [multiFieldRow textFitsInMultiFieldForLabel:@"" forPlaceholder:cvvText forFieldWidth:fieldWidthForTwoFieldsPerRow]);
@@ -260,7 +260,7 @@
         multiFieldRow.labelWidth = 0;
       }
 
-      NSString* cvvText = CardIOLocalizedString(@"entry_cvv", self.context.languageOrLocale); // CVV
+      NSString* cvvText = [NSString stringWithFormat:CardIOLocalizedString(@"entry_cvv", self.context.languageOrLocale), self.cardInfo.cardType ? [NSNumber numberWithInteger:self.cvvLength] : @"3-4"]; // CVV
       [multiFieldRow.labels addObject:cvvText];
       self.cvvTextField = [multiFieldRow.textFields lastObject];
       [self.visibleTextFields addObject:self.cvvTextField];
@@ -775,7 +775,24 @@
   BOOL isValid = numberIsValid && expiryIsValid && cvvIsValid && postalCodeIsValid && cardholderNameIsValid;
   self.navigationItem.rightBarButtonItem.enabled = isValid;
   self.doneButton.enabled = isValid;
-  [self.doneButton setBackgroundColor:isValid ? [UIColor colorWithRed:0 green:118.0f/255 blue:1 alpha:1] : [UIColor colorWithRed:166.0f/255 green:171.0f/255 blue:177.0f/255 alpha:1]];
+  
+  CardIODataEntryViewController * _self = self;
+  
+  [UIView animateWithDuration:0.4 animations:^{
+    if (!numberIsValid) {
+      [_self.doneButton setTitle:@"Add Card Number" forState:UIControlStateNormal];
+      [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
+    } else if (!expiryIsValid) {
+      [_self.doneButton setTitle:@"Add Card Expiry Date" forState:UIControlStateNormal];
+      [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
+    } else if (!cvvIsValid) {
+      [_self.doneButton setTitle:@"Add Card Security Code" forState:UIControlStateNormal];
+      [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
+    } else {
+      [_self.doneButton setTitle:@"Next" forState:UIControlStateNormal];
+      [_self.doneButton setBackgroundColor:isValid ? [UIColor colorWithRed:0 green:118.0f/255 blue:1 alpha:1] : [UIColor colorWithRed:166.0f/255 green:171.0f/255 blue:177.0f/255 alpha:1]];
+    }
+  }];
   
   return isValid;
 }
