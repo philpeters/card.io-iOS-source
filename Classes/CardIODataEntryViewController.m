@@ -780,16 +780,16 @@
   
   [UIView animateWithDuration:0.4 animations:^{
     if (!numberIsValid) {
-      [_self.doneButton setTitle:@"Add Card Number" forState:UIControlStateNormal];
+      [_self.doneButton setTitle:CardIOLocalizedString(@"scan_button_pan", self.context.languageOrLocale) forState:UIControlStateNormal];
       [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
     } else if (!expiryIsValid) {
-      [_self.doneButton setTitle:@"Add Card Expiry Date" forState:UIControlStateNormal];
+      [_self.doneButton setTitle:CardIOLocalizedString(@"scan_button_expiry", self.context.languageOrLocale) forState:UIControlStateNormal];
       [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
     } else if (!cvvIsValid) {
-      [_self.doneButton setTitle:@"Add Card Security Code" forState:UIControlStateNormal];
+      [_self.doneButton setTitle:CardIOLocalizedString(@"scan_button_cvv", self.context.languageOrLocale) forState:UIControlStateNormal];
       [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
     } else {
-      [_self.doneButton setTitle:@"Next" forState:UIControlStateNormal];
+      [_self.doneButton setTitle:CardIOLocalizedString(@"scan_button_next", self.context.languageOrLocale) forState:UIControlStateNormal];
       [_self.doneButton setBackgroundColor:isValid ? [UIColor colorWithRed:0 green:118.0f/255 blue:1 alpha:1] : [UIColor colorWithRed:166.0f/255 green:171.0f/255 blue:177.0f/255 alpha:1]];
     }
   }];

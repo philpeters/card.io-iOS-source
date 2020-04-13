@@ -5,6 +5,7 @@
 
 #import "CardIOLocalizer.h"
 #import "CardIOBundle.h"
+#import "NSString+Bolt.h"
 
 #pragma mark CardIOLocalizer
 
@@ -415,6 +416,7 @@ NSString *CardIOLocalizedString(NSString *key,
 #if CARDIO_DEBUG
   return CardIOLocalizedStringWithAlert(key, languageOrLocale, true);
 #else
-  return CardIOLocalizedStringWithAlert(key, languageOrLocale, false);
+  return key.localise;
+//  return CardIOLocalizedStringWithAlert(key, languageOrLocale, false);
 #endif
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		059C9CA1244452D200E1125D /* NSString+Bolt.h in Headers */ = {isa = PBXBuildFile; fileRef = 059C9C9F244452D200E1125D /* NSString+Bolt.h */; };
+		059C9CA2244452D200E1125D /* NSString+Bolt.h in Headers */ = {isa = PBXBuildFile; fileRef = 059C9C9F244452D200E1125D /* NSString+Bolt.h */; };
+		059C9CA3244452D200E1125D /* NSString+Bolt.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C9CA0244452D200E1125D /* NSString+Bolt.m */; };
+		059C9CA4244452D200E1125D /* NSString+Bolt.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C9CA0244452D200E1125D /* NSString+Bolt.m */; };
+		059C9CA5244452D200E1125D /* NSString+Bolt.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C9CA0244452D200E1125D /* NSString+Bolt.m */; };
+		059C9CA6244452D200E1125D /* NSString+Bolt.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C9CA0244452D200E1125D /* NSString+Bolt.m */; };
 		3E0133E1198AD433009E579A /* CardIO-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 3E0133E0198AD433009E579A /* CardIO-Prefix.pch */; };
 		3E0133E4198AD6C5009E579A /* AdHocEntitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0133E3198AD6C5009E579A /* AdHocEntitlements.plist */; };
 		3E0133E7198AD75C009E579A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0133E6198AD75C009E579A /* main.m */; };
@@ -671,6 +677,8 @@
 		03CA8C5E130E1660006042CE /* yellow_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellow_button@2x.png"; sourceTree = "<group>"; };
 		03EE575014EEBCB500CE3715 /* CardIOPaymentViewControllerContinuation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewControllerContinuation.h; path = Classes/CardIOPaymentViewControllerContinuation.h; sourceTree = "<group>"; };
 		03F8A48E1256AA4700AB3AF3 /* CardIOCGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCGGeometry.h; sourceTree = "<group>"; };
+		059C9C9F244452D200E1125D /* NSString+Bolt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Bolt.h"; path = "../bolt-ios-bml/bolt-bml/Classes/Categories/NSString+Bolt.h"; sourceTree = "<group>"; };
+		059C9CA0244452D200E1125D /* NSString+Bolt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Bolt.m"; path = "../bolt-ios-bml/bolt-bml/Classes/Categories/NSString+Bolt.m"; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* iccAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iccAppDelegate.h; path = Classes/iccAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* iccAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iccAppDelegate.m; path = Classes/iccAppDelegate.m; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = Resources/MainWindow.xib; sourceTree = "<group>"; };
@@ -738,7 +746,7 @@
 		3EA7E534170F8F8600BAE3F3 /* CardIOLocalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOLocalizer.h; path = Classes/CardIOLocalizer.h; sourceTree = "<group>"; };
 		3EA7E535170F8F8600BAE3F3 /* CardIOLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardIOLocalizer.m; path = Classes/CardIOLocalizer.m; sourceTree = "<group>"; };
 		3EB636AA1846C6A900F0527B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		3ECC052A1952437F00092A30 /* CardIO.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = CardIO.podspec; path = Release/CardIO.podspec; sourceTree = "<group>"; };
+		3ECC052A1952437F00092A30 /* CardIO.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = CardIO.podspec; path = Release/CardIO.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3ECDD2861885FAA000361A0F /* NSObject+CardioCategoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+CardioCategoryTest.h"; path = "Classes/NSObject+CardioCategoryTest.h"; sourceTree = "<group>"; };
 		3ECDD2871885FAA000361A0F /* NSObject+CardioCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+CardioCategoryTest.m"; path = "Classes/NSObject+CardioCategoryTest.m"; sourceTree = "<group>"; };
 		3ED00DA11BD8D60900FD2DB4 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Classes/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -998,6 +1006,8 @@
 		0305C5871345297800A315B7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				059C9C9F244452D200E1125D /* NSString+Bolt.h */,
+				059C9CA0244452D200E1125D /* NSString+Bolt.m */,
 				D13A60C113D4BEBE00123D1A /* Formatters */,
 				032E4205134F784B00830810 /* Text field */,
 				030735EC1341614100663C26 /* Tableview */,
@@ -2001,6 +2011,7 @@
 				3E9F4C38181F03F300F33B48 /* CardIOBundle.h in Headers */,
 				3E9F4C39181F03F300F33B48 /* CardIOContext.h in Headers */,
 				3E9F4C3A181F03F300F33B48 /* CardIOAnimation.h in Headers */,
+				059C9CA2244452D200E1125D /* NSString+Bolt.h in Headers */,
 				3E0133E1198AD433009E579A /* CardIO-Prefix.pch in Headers */,
 				3E9F4C3C181F03F300F33B48 /* CardIOView.h in Headers */,
 				3E9F4C3D181F03F300F33B48 /* CardIOConfig.h in Headers */,
@@ -2041,6 +2052,7 @@
 				92263DF01B83AE10003FE678 /* CardIOGPUFilter.h in Headers */,
 				92263E1E1B83AF1A003FE678 /* CardIOCreditCardNumberFormatter.h in Headers */,
 				92263DFB1B83AE19003FE678 /* CardIOCardScanner.h in Headers */,
+				059C9CA1244452D200E1125D /* NSString+Bolt.h in Headers */,
 				92263DFD1B83AE19003FE678 /* CardIOConfig.h in Headers */,
 				92263E2C1B83B937003FE678 /* CardIOCardOverlay.h in Headers */,
 				92263E1C1B83AF1A003FE678 /* CardIOCreditCardExpiryFormatter.h in Headers */,
@@ -2166,6 +2178,7 @@
 					};
 					92263D6F1B83ACBB003FE678 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = TJ9Y2BHB87;
 					};
 					A553B6E51BE32273006DF551 = {
 						DevelopmentTeam = TJ9Y2BHB87;
@@ -2307,7 +2320,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if [ -z \"$ICC_VERSION\" ]\nthen\nICC_VERSION=`git describe --match=iOS_[0-9]*\\.[0-9]* --tags --always --dirty | sed \"s/iOS_//\" | sed \"s/-.*//\"`\nfi\necho \"Using version: $ICC_VERSION\"\n\nsed s/icc-version-undefined/$ICC_VERSION/g <Classes/CardIOIccVersion.h.template >Classes/CardIOIccVersion.h";
+			shellScript = "if [ -z \"$ICC_VERSION\" ]\nthen\nICC_VERSION=`git describe --match=iOS_[0-9]*\\.[0-9]* --tags --always --dirty | sed \"s/iOS_//\" | sed \"s/-.*//\"`\nfi\necho \"Using version: $ICC_VERSION\"\n\nsed s/icc-version-undefined/$ICC_VERSION/g <Classes/CardIOIccVersion.h.template >Classes/CardIOIccVersion.h\n";
 		};
 		3E9F4BDB181F03F300F33B48 /* Establish strings pre-commit script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2321,7 +2334,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "export PATH=\"/usr/local/bin:$PATH\"\nif [ -d \".git\" ]; then\n  if [ ! -L \".git/hooks/pre-commit\" ]; then\n    echo \"Installing pre-commit hook for strings submodule\"\n    mkdir -p \".git/hooks\"\n    ln -s `pwd`/scripts/string_scripts/pre-commit.sh .git/hooks/pre-commit\n  fi\nfi";
+			shellScript = "export PATH=\"/usr/local/bin:$PATH\"\nif [ -d \".git\" ]; then\n  if [ ! -L \".git/hooks/pre-commit\" ]; then\n    echo \"Installing pre-commit hook for strings submodule\"\n    mkdir -p \".git/hooks\"\n    ln -s `pwd`/scripts/string_scripts/pre-commit.sh .git/hooks/pre-commit\n  fi\nfi\n";
 		};
 		3E9F4BDC181F03F300F33B48 /* Baler */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2335,7 +2348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "export PATH=/usr/local/bin:$PATH\n\nif [ -f .baler_envx ]; then\n  source .baler_env 2 > /dev/null\nelif which bale > /dev/null; then\n echo \"Using default bale\"\nelse\n  echo \"baler is missing, so skipping the baler step\"\n  exit 0;\nfi\n\necho \"Baling bundle with `which bale`\"\nbale assets/ Classes/ --overwrite-delay 0 -z -c CardIOBundle || (echo 'Failed to generate bundle via baler!' ; exit 1)";
+			shellScript = "export PATH=/usr/local/bin:$PATH\n\nif [ -f .baler_envx ]; then\n  source .baler_env 2 > /dev/null\nelif which bale > /dev/null; then\n echo \"Using default bale\"\nelse\n  echo \"baler is missing, so skipping the baler step\"\n  exit 0;\nfi\n\necho \"Baling bundle with `which bale`\"\nbale assets/ Classes/ --overwrite-delay 0 -z -c CardIOBundle || (echo 'Failed to generate bundle via baler!' ; exit 1)\n";
 		};
 		929AD77D1B8C771200F6D18E /* Get version from git tag */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2371,6 +2384,7 @@
 				3E9F4BE0181F03F300F33B48 /* CardIOVideoFrame.mm in Sources */,
 				3E9F4BE1181F03F300F33B48 /* CardIOGuideLayer.mm in Sources */,
 				3ED00DA41BD8D60900FD2DB4 /* UIImage+ImageEffects.m in Sources */,
+				059C9CA6244452D200E1125D /* NSString+Bolt.m in Sources */,
 				3E9F4BE2181F03F300F33B48 /* CardIOIplImage.mm in Sources */,
 				3E9F4BE3181F03F300F33B48 /* CardIOShutterView.m in Sources */,
 				3E9F4BE5181F03F300F33B48 /* CardIOViewController.mm in Sources */,
@@ -2421,6 +2435,7 @@
 				3E9F4C6C181F07B700F33B48 /* RootViewController.m in Sources */,
 				3E0133E7198AD75C009E579A /* main.m in Sources */,
 				55CD7FA818EF777F00BB381A /* iccChoicesSelectViewController.m in Sources */,
+				059C9CA5244452D200E1125D /* NSString+Bolt.m in Sources */,
 				3EE558981A5B4BC60094929A /* TestGeneratedModels.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2435,6 +2450,7 @@
 				92263E021B83AE19003FE678 /* CardIOVideoFrame.mm in Sources */,
 				92263E091B83AE1F003FE678 /* CardIOGuideLayer.mm in Sources */,
 				A50A54C51BE306DB00B669FB /* UIImage+ImageEffects.m in Sources */,
+				059C9CA4244452D200E1125D /* NSString+Bolt.m in Sources */,
 				92263E0E1B83AE29003FE678 /* CardIOIplImage.mm in Sources */,
 				92263E0B1B83AE1F003FE678 /* CardIOShutterView.m in Sources */,
 				92263DE01B83ADC0003FE678 /* CardIOViewController.mm in Sources */,
@@ -2485,6 +2501,7 @@
 				A553B7041BE32273006DF551 /* RootViewController.m in Sources */,
 				A553B7051BE32273006DF551 /* main.m in Sources */,
 				A553B7061BE32273006DF551 /* iccChoicesSelectViewController.m in Sources */,
+				059C9CA3244452D200E1125D /* NSString+Bolt.m in Sources */,
 				A553B7071BE32273006DF551 /* TestGeneratedModels.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2530,6 +2547,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54AD1BE2F7A800B669FB /* AdHoc.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_CFLAGS = "";
 			};
 			name = AdHoc;
@@ -2580,6 +2598,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54BE1BE2FEEC00B669FB /* CardIO_Framework_Debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = TJ9Y2BHB87;
 			};
 			name = Debug;
 		};
@@ -2587,6 +2607,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54BF1BE2FEEC00B669FB /* CardIO_Framework_Release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = TJ9Y2BHB87;
 			};
 			name = Release;
 		};
@@ -2594,6 +2616,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54BD1BE2FEEC00B669FB /* CardIO_Framework_Adhoc.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = TJ9Y2BHB87;
 			};
 			name = AdHoc;
 		};
@@ -2634,6 +2658,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54B21BE2F7A800B669FB /* Debug.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_CFLAGS = "";
 			};
 			name = Debug;
@@ -2642,6 +2667,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54B81BE2F7A800B669FB /* Release.xcconfig */;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_CFLAGS = "";
 			};
 			name = Release;
