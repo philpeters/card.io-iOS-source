@@ -15,7 +15,7 @@
 #define kDefaultLabelWidth 50
 #define kLineSeparatorWidthPreIOS7 1.0f
 #define kLineSeparatorWidthIOS7 0.5f
-#define kLineSeparatorGrayColor 0.75f
+#define kLineSeparatorGrayColor (@available(iOS 13.0, *) ? [UIColor separatorColor] : [UIColor colorWithWhite:0.75 alpha:1.0f])
 
 @interface CardIOMultipleFieldContentView : UIView
 
@@ -111,14 +111,8 @@
   CGFloat cellWidth = self.bounds.size.width / _numberOfFields;
   CGFloat xAdjust;
   
-  if (iOS_7_PLUS) {
-    xAdjust = 0;
-    CGContextSetLineWidth(cgContext, kLineSeparatorWidthIOS7);
-  }
-  else {
-    xAdjust = 0.5f;
-    CGContextSetLineWidth(cgContext, kLineSeparatorWidthPreIOS7);
-  }
+  xAdjust = 0;
+  CGContextSetLineWidth(cgContext, kLineSeparatorWidthIOS7);
   
   CGFloat y_min = 0;
   CGFloat y_max = self.bounds.size.height;
@@ -126,7 +120,8 @@
   for(int i = 1; i < _numberOfFields; i++) {
     CGFloat x = (CGFloat)floor(cellWidth * i) - xAdjust;
     
-    CGContextSetGrayStrokeColor(cgContext, kLineSeparatorGrayColor, 1.0);
+//    CGContextSetGrayStrokeColor(cgContext, kLineSeparatorGrayColor, 1);
+    CGContextSetStrokeColorWithColor(cgContext, [((UIColor *)kLineSeparatorGrayColor) CGColor]);
     
     CGContextMoveToPoint(cgContext, x, y_min);
     CGContextAddLineToPoint(cgContext, x, y_max);

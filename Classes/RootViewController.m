@@ -191,9 +191,15 @@
   self.i18nCardIOPaymentViewController.disableManualEntryButtons = NO;
   self.i18nCardIOPaymentViewController.useCardIOLogo = NO;
   self.i18nCardIOPaymentViewController.languageOrLocale = language;
+  if (@available(13.0, *)) {
+    self.i18nCardIOPaymentViewController.backgroundColor = [UIColor systemGroupedBackgroundColor]
+  }
 
   UIView *coverView = [[UIView alloc] initWithFrame:self.i18nCardIOPaymentViewController.view.bounds];
   coverView.backgroundColor = [UIColor clearColor];
+  if (@available(13.0, *)) {
+    coverView.backgroundColor = [UIColor systemGroupedBackgroundColor]
+  }
   coverView.userInteractionEnabled = YES;
 
   UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, coverView.frame.size.height / 5, coverView.frame.size.width, 44)];
@@ -364,25 +370,25 @@
   [CardIOUtilities preload];
 }
 
-- (UIStatusBarStyle) preferredStatusBarStyle {
-  return UIStatusBarStyleDefault;
-}
+//- (UIStatusBarStyle) preferredStatusBarStyle {
+//  return UIStatusBarStyleDefault;
+//}
 
-- (BOOL)prefersStatusBarHidden {
-  return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"UIStatusBarHidden"] boolValue];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  return YES;
-}
-
-- (BOOL)shouldAutorotate {
-  return YES;
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-  return UIInterfaceOrientationMaskAll;
-}
+//////- (BOOL)prefersStatusBarHidden {
+//////  return [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"UIStatusBarHidden"] boolValue];
+//////}
+////
+////- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+////  return YES;
+////}
+////
+////- (BOOL)shouldAutorotate {
+////  return YES;
+////}
+//
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+//  return UIInterfaceOrientationMaskAll;
+//}
 
 - (void)didReceiveWillResignActiveNotification:(NSNotification *)notification {
   [self setOutcomeText:@"" image:nil];

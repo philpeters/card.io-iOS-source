@@ -23,4 +23,8 @@
 
 + (UITableViewCellStyle) defaultCellStyle;
 
++ (UIColor *) errorColor;
++ (UIColor *) errorButtonColor;
++ (UIColor *) readyButtonColor;
++ (UIColor *) disabledButtonColor;
 @end

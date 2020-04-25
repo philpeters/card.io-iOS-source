@@ -3,16 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		059C9CA1244452D200E1125D /* NSString+Bolt.h in Headers */ = {isa = PBXBuildFile; fileRef = 059C9C9F244452D200E1125D /* NSString+Bolt.h */; };
 		059C9CA2244452D200E1125D /* NSString+Bolt.h in Headers */ = {isa = PBXBuildFile; fileRef = 059C9C9F244452D200E1125D /* NSString+Bolt.h */; };
-		059C9CA3244452D200E1125D /* NSString+Bolt.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C9CA0244452D200E1125D /* NSString+Bolt.m */; };
-		059C9CA4244452D200E1125D /* NSString+Bolt.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C9CA0244452D200E1125D /* NSString+Bolt.m */; };
-		059C9CA5244452D200E1125D /* NSString+Bolt.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C9CA0244452D200E1125D /* NSString+Bolt.m */; };
-		059C9CA6244452D200E1125D /* NSString+Bolt.m in Sources */ = {isa = PBXBuildFile; fileRef = 059C9CA0244452D200E1125D /* NSString+Bolt.m */; };
+		05C3B58D2448602D00850DE4 /* BoltAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05C3B58C2448602D00850DE4 /* BoltAssets.xcassets */; };
+		05C3B58E2448602D00850DE4 /* BoltAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05C3B58C2448602D00850DE4 /* BoltAssets.xcassets */; };
 		3E0133E1198AD433009E579A /* CardIO-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 3E0133E0198AD433009E579A /* CardIO-Prefix.pch */; };
 		3E0133E4198AD6C5009E579A /* AdHocEntitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E0133E3198AD6C5009E579A /* AdHocEntitlements.plist */; };
 		3E0133E7198AD75C009E579A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0133E6198AD75C009E579A /* main.m */; };
@@ -20,47 +18,47 @@
 		3E9618E219C8EBC50023CDBB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E119C8EBC50023CDBB /* CoreMedia.framework */; };
 		3E9618E419C8EBCB0023CDBB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E319C8EBCB0023CDBB /* MobileCoreServices.framework */; };
 		3E9618E819C8F6C70023CDBB /* MainWindow~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E9618E719C8F6C70023CDBB /* MainWindow~iPad.xib */; };
-		3E9F4BDE181F03F300F33B48 /* CardIOTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 030735FF134167C000663C26 /* CardIOTableViewCell.m */; };
-		3E9F4BDF181F03F300F33B48 /* CardIOPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0307CFF213304B210019C8F7 /* CardIOPaymentViewController.m */; };
-		3E9F4BE0181F03F300F33B48 /* CardIOVideoFrame.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036DD66012663A6300EB719A /* CardIOVideoFrame.mm */; };
-		3E9F4BE1181F03F300F33B48 /* CardIOGuideLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036DD574126518E400EB719A /* CardIOGuideLayer.mm */; };
-		3E9F4BE2181F03F300F33B48 /* CardIOIplImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 030A71411214AC9700BE07FB /* CardIOIplImage.mm */; };
-		3E9F4BE3181F03F300F33B48 /* CardIOShutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0305F10D12673CA9002327F4 /* CardIOShutterView.m */; };
-		3E9F4BE5181F03F300F33B48 /* CardIOViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03B2E7081200EFBC00B14549 /* CardIOViewController.mm */; };
-		3E9F4BE6181F03F300F33B48 /* CardIOVideoStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = 031F1277132EBF2800738505 /* CardIOVideoStream.mm */; };
-		3E9F4BE7181F03F300F33B48 /* CardIODevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 031F127E132EC5CA00738505 /* CardIODevice.m */; };
-		3E9F4BE8181F03F300F33B48 /* CardIODataEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B21725134648EE00958550 /* CardIODataEntryViewController.m */; };
-		3E9F4BE9181F03F300F33B48 /* CardIOCardOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B21728134652DB00958550 /* CardIOCardOverlay.m */; };
-		3E9F4BEA181F03F300F33B48 /* CardIOCreditCardNumber.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0307360F1343EC4300663C26 /* CardIOCreditCardNumber.mm */; };
-		3E9F4BEB181F03F300F33B48 /* CardIOCVVTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 030736121343F53A00663C26 /* CardIOCVVTextFieldDelegate.m */; };
-		3E9F4BEC181F03F300F33B48 /* CardIONumbersTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0307360C1343C0F300663C26 /* CardIONumbersTextFieldDelegate.m */; };
-		3E9F4BED181F03F300F33B48 /* CardIOSectionBasedTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 030735EE1341615D00663C26 /* CardIOSectionBasedTableViewDelegate.m */; };
-		3E9F4BEE181F03F300F33B48 /* CardIORowBasedTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 030735F01341615D00663C26 /* CardIORowBasedTableViewSection.m */; };
-		3E9F4BEF181F03F300F33B48 /* CardIOConfigurableTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0307360613416B0600663C26 /* CardIOConfigurableTextFieldDelegate.m */; };
-		3E9F4BF0181F03F300F33B48 /* CardIOReadCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 034BEDC013577AED00ECEBF6 /* CardIOReadCardInfo.m */; };
-		3E9F4BF2181F03F300F33B48 /* CardIOResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C86E58136650ED006B23F9 /* CardIOResource.m */; };
-		3E9F4BF3181F03F300F33B48 /* CardIOCreditCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AF634813CCB3C300330C76 /* CardIOCreditCardInfo.m */; };
-		3E9F4BF4181F03F300F33B48 /* CardIOMultipleFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1800C7013CE6D0C0004444E /* CardIOMultipleFieldTableViewCell.m */; };
-		3E9F4BF5181F03F300F33B48 /* CardIOCreditCardNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D13A60C313D4BF4400123D1A /* CardIOCreditCardNumberFormatter.m */; };
-		3E9F4BF6181F03F300F33B48 /* CardIOCreditCardExpiryFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D13A60C713D4F3A900123D1A /* CardIOCreditCardExpiryFormatter.m */; };
-		3E9F4BF7181F03F300F33B48 /* CardIOExpiryTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D13A60CC13D502BF00123D1A /* CardIOExpiryTextFieldDelegate.m */; };
-		3E9F4BFA181F03F300F33B48 /* CardIOMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 0393B0B5143A625300A65A00 /* CardIOMacros.m */; };
-		3E9F4BFC181F03F300F33B48 /* CardIOTransitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F66D67146456880001F15F /* CardIOTransitionView.m */; };
-		3E9F4BFE181F03F300F33B48 /* CardIOCardScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03C8E03C1570272F00569A22 /* CardIOCardScanner.mm */; };
-		3E9F4C00181F03F300F33B48 /* dmz_all.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0378AE18158C01CA00545AAA /* dmz_all.cpp */; settings = {COMPILER_FLAGS = "-O3 -fslp-vectorize-aggressive"; }; };
-		3E9F4C01181F03F300F33B48 /* CardIOAnalytics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8487783115A39BCB00B08B41 /* CardIOAnalytics.mm */; };
-		3E9F4C02181F03F300F33B48 /* mz_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84979985159E5E0500527FF5 /* mz_ios.mm */; };
-		3E9F4C03181F03F300F33B48 /* CardIOGPUFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497998C159E5E3C00527FF5 /* CardIOGPUFilter.m */; };
-		3E9F4C04181F03F300F33B48 /* CardIOGPURenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8497998E159E5E3C00527FF5 /* CardIOGPURenderer.mm */; };
-		3E9F4C05181F03F300F33B48 /* CardIOGPUTransformFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84979991159E5E3C00527FF5 /* CardIOGPUTransformFilter.m */; };
-		3E9F4C08181F03F300F33B48 /* CardIOBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF9307716557ED7000936BA /* CardIOBundle.m */; };
-		3E9F4C09181F03F300F33B48 /* CardIOContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EC97ED168BA44F00C9A30C /* CardIOContext.m */; };
-		3E9F4C0A181F03F300F33B48 /* CardIOAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5EDB90F168E05370055E716 /* CardIOAnimation.mm */; };
-		3E9F4C0C181F03F300F33B48 /* CardIOLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7E535170F8F8600BAE3F3 /* CardIOLocalizer.m */; };
-		3E9F4C0D181F03F300F33B48 /* CardIOPostalCodeTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED37A1117A89BA500A09325 /* CardIOPostalCodeTextFieldDelegate.m */; };
-		3E9F4C0E181F03F300F33B48 /* CardIOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E583C2617BB062100CB326A /* CardIOConfig.m */; };
-		3E9F4C0F181F03F300F33B48 /* CardIOCameraView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E583C2E17BC34A400CB326A /* CardIOCameraView.mm */; };
-		3E9F4C10181F03F300F33B48 /* CardIOView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E4D865717BC4EBB0057505D /* CardIOView.mm */; };
+		3E9F4BDE181F03F300F33B48 /* CardIOTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 030735FF134167C000663C26 /* CardIOTableViewCell.m */; platformFilter = ios; };
+		3E9F4BDF181F03F300F33B48 /* CardIOPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0307CFF213304B210019C8F7 /* CardIOPaymentViewController.m */; platformFilter = ios; };
+		3E9F4BE0181F03F300F33B48 /* CardIOVideoFrame.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036DD66012663A6300EB719A /* CardIOVideoFrame.mm */; platformFilter = ios; };
+		3E9F4BE1181F03F300F33B48 /* CardIOGuideLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 036DD574126518E400EB719A /* CardIOGuideLayer.mm */; platformFilter = ios; };
+		3E9F4BE2181F03F300F33B48 /* CardIOIplImage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 030A71411214AC9700BE07FB /* CardIOIplImage.mm */; platformFilter = ios; };
+		3E9F4BE3181F03F300F33B48 /* CardIOShutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0305F10D12673CA9002327F4 /* CardIOShutterView.m */; platformFilter = ios; };
+		3E9F4BE5181F03F300F33B48 /* CardIOViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03B2E7081200EFBC00B14549 /* CardIOViewController.mm */; platformFilter = ios; };
+		3E9F4BE6181F03F300F33B48 /* CardIOVideoStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = 031F1277132EBF2800738505 /* CardIOVideoStream.mm */; platformFilter = ios; };
+		3E9F4BE7181F03F300F33B48 /* CardIODevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 031F127E132EC5CA00738505 /* CardIODevice.m */; platformFilter = ios; };
+		3E9F4BE8181F03F300F33B48 /* CardIODataEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B21725134648EE00958550 /* CardIODataEntryViewController.m */; platformFilter = ios; };
+		3E9F4BE9181F03F300F33B48 /* CardIOCardOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B21728134652DB00958550 /* CardIOCardOverlay.m */; platformFilter = ios; };
+		3E9F4BEA181F03F300F33B48 /* CardIOCreditCardNumber.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0307360F1343EC4300663C26 /* CardIOCreditCardNumber.mm */; platformFilter = ios; };
+		3E9F4BEB181F03F300F33B48 /* CardIOCVVTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 030736121343F53A00663C26 /* CardIOCVVTextFieldDelegate.m */; platformFilter = ios; };
+		3E9F4BEC181F03F300F33B48 /* CardIONumbersTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0307360C1343C0F300663C26 /* CardIONumbersTextFieldDelegate.m */; platformFilter = ios; };
+		3E9F4BED181F03F300F33B48 /* CardIOSectionBasedTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 030735EE1341615D00663C26 /* CardIOSectionBasedTableViewDelegate.m */; platformFilter = ios; };
+		3E9F4BEE181F03F300F33B48 /* CardIORowBasedTableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 030735F01341615D00663C26 /* CardIORowBasedTableViewSection.m */; platformFilter = ios; };
+		3E9F4BEF181F03F300F33B48 /* CardIOConfigurableTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0307360613416B0600663C26 /* CardIOConfigurableTextFieldDelegate.m */; platformFilter = ios; };
+		3E9F4BF0181F03F300F33B48 /* CardIOReadCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 034BEDC013577AED00ECEBF6 /* CardIOReadCardInfo.m */; platformFilter = ios; };
+		3E9F4BF2181F03F300F33B48 /* CardIOResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C86E58136650ED006B23F9 /* CardIOResource.m */; platformFilter = ios; };
+		3E9F4BF3181F03F300F33B48 /* CardIOCreditCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AF634813CCB3C300330C76 /* CardIOCreditCardInfo.m */; platformFilter = ios; };
+		3E9F4BF4181F03F300F33B48 /* CardIOMultipleFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1800C7013CE6D0C0004444E /* CardIOMultipleFieldTableViewCell.m */; platformFilter = ios; };
+		3E9F4BF5181F03F300F33B48 /* CardIOCreditCardNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D13A60C313D4BF4400123D1A /* CardIOCreditCardNumberFormatter.m */; platformFilter = ios; };
+		3E9F4BF6181F03F300F33B48 /* CardIOCreditCardExpiryFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = D13A60C713D4F3A900123D1A /* CardIOCreditCardExpiryFormatter.m */; platformFilter = ios; };
+		3E9F4BF7181F03F300F33B48 /* CardIOExpiryTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D13A60CC13D502BF00123D1A /* CardIOExpiryTextFieldDelegate.m */; platformFilter = ios; };
+		3E9F4BFA181F03F300F33B48 /* CardIOMacros.m in Sources */ = {isa = PBXBuildFile; fileRef = 0393B0B5143A625300A65A00 /* CardIOMacros.m */; platformFilter = ios; };
+		3E9F4BFC181F03F300F33B48 /* CardIOTransitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F66D67146456880001F15F /* CardIOTransitionView.m */; platformFilter = ios; };
+		3E9F4BFE181F03F300F33B48 /* CardIOCardScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03C8E03C1570272F00569A22 /* CardIOCardScanner.mm */; platformFilter = ios; };
+		3E9F4C00181F03F300F33B48 /* dmz_all.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0378AE18158C01CA00545AAA /* dmz_all.cpp */; platformFilter = ios; settings = {COMPILER_FLAGS = "-O3 -fslp-vectorize-aggressive"; }; };
+		3E9F4C01181F03F300F33B48 /* CardIOAnalytics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8487783115A39BCB00B08B41 /* CardIOAnalytics.mm */; platformFilter = ios; };
+		3E9F4C02181F03F300F33B48 /* mz_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84979985159E5E0500527FF5 /* mz_ios.mm */; platformFilter = ios; };
+		3E9F4C03181F03F300F33B48 /* CardIOGPUFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497998C159E5E3C00527FF5 /* CardIOGPUFilter.m */; platformFilter = ios; };
+		3E9F4C04181F03F300F33B48 /* CardIOGPURenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8497998E159E5E3C00527FF5 /* CardIOGPURenderer.mm */; platformFilter = ios; };
+		3E9F4C05181F03F300F33B48 /* CardIOGPUTransformFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84979991159E5E3C00527FF5 /* CardIOGPUTransformFilter.m */; platformFilter = ios; };
+		3E9F4C08181F03F300F33B48 /* CardIOBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF9307716557ED7000936BA /* CardIOBundle.m */; platformFilter = ios; };
+		3E9F4C09181F03F300F33B48 /* CardIOContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B5EC97ED168BA44F00C9A30C /* CardIOContext.m */; platformFilter = ios; };
+		3E9F4C0A181F03F300F33B48 /* CardIOAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5EDB90F168E05370055E716 /* CardIOAnimation.mm */; platformFilter = ios; };
+		3E9F4C0C181F03F300F33B48 /* CardIOLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7E535170F8F8600BAE3F3 /* CardIOLocalizer.m */; platformFilter = ios; };
+		3E9F4C0D181F03F300F33B48 /* CardIOPostalCodeTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED37A1117A89BA500A09325 /* CardIOPostalCodeTextFieldDelegate.m */; platformFilter = ios; };
+		3E9F4C0E181F03F300F33B48 /* CardIOConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E583C2617BB062100CB326A /* CardIOConfig.m */; platformFilter = ios; };
+		3E9F4C0F181F03F300F33B48 /* CardIOCameraView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E583C2E17BC34A400CB326A /* CardIOCameraView.mm */; platformFilter = ios; };
+		3E9F4C10181F03F300F33B48 /* CardIOView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E4D865717BC4EBB0057505D /* CardIOView.mm */; platformFilter = ios; };
 		3E9F4C1D181F03F300F33B48 /* geometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 0381A82D139982AF0088C26E /* geometry.h */; };
 		3E9F4C1E181F03F300F33B48 /* CardIOMultipleFieldTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D1800C6F13CE6D0C0004444E /* CardIOMultipleFieldTableViewCell.h */; };
 		3E9F4C1F181F03F300F33B48 /* CardIOCreditCardNumberFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = D13A60C213D4BF4400123D1A /* CardIOCreditCardNumberFormatter.h */; };
@@ -88,10 +86,10 @@
 		3E9F4C3D181F03F300F33B48 /* CardIOConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E583C2517BB062100CB326A /* CardIOConfig.h */; };
 		3E9F4C3E181F03F300F33B48 /* CardIOViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E4D865A17BC50AB0057505D /* CardIOViewDelegate.h */; };
 		3E9F4C3F181F03F300F33B48 /* CardIOViewContinuation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E4D865D17BC58650057505D /* CardIOViewContinuation.h */; };
-		3E9F4C41181F03F300F33B48 /* CardIO.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1824381144CF73400829B91 /* CardIO.h */; };
-		3E9F4C42181F03F300F33B48 /* CardIOCreditCardInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1824386144CF73400829B91 /* CardIOCreditCardInfo.h */; };
-		3E9F4C43181F03F300F33B48 /* CardIOPaymentViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1824387144CF73400829B91 /* CardIOPaymentViewController.h */; };
-		3E9F4C44181F03F300F33B48 /* CardIOPaymentViewControllerDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1824388144CF73400829B91 /* CardIOPaymentViewControllerDelegate.h */; };
+		3E9F4C41181F03F300F33B48 /* CardIO.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1824381144CF73400829B91 /* CardIO.h */; platformFilter = ios; };
+		3E9F4C42181F03F300F33B48 /* CardIOCreditCardInfo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1824386144CF73400829B91 /* CardIOCreditCardInfo.h */; platformFilter = ios; };
+		3E9F4C43181F03F300F33B48 /* CardIOPaymentViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1824387144CF73400829B91 /* CardIOPaymentViewController.h */; platformFilter = ios; };
+		3E9F4C44181F03F300F33B48 /* CardIOPaymentViewControllerDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1824388144CF73400829B91 /* CardIOPaymentViewControllerDelegate.h */; platformFilter = ios; };
 		3E9F4C4E181F07B700F33B48 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		3E9F4C50181F07B700F33B48 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036DD69E126654ED00EB719A /* RootViewController.xib */; };
 		3E9F4C51181F07B700F33B48 /* green_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 036DD6C31266574A00EB719A /* green_button@2x.png */; };
@@ -120,26 +118,26 @@
 		3E9F4C81181F09CD00F33B48 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9F4C49181F03F300F33B48 /* libCardIO.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3EB636AC1846CCA400F0527B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB636AA1846C6A900F0527B /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3ECDD2881885FAA000361A0F /* NSObject+CardioCategoryTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECDD2861885FAA000361A0F /* NSObject+CardioCategoryTest.h */; };
-		3ECDD2891885FAA000361A0F /* NSObject+CardioCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECDD2871885FAA000361A0F /* NSObject+CardioCategoryTest.m */; };
+		3ECDD2891885FAA000361A0F /* NSObject+CardioCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECDD2871885FAA000361A0F /* NSObject+CardioCategoryTest.m */; platformFilter = ios; };
 		3ED00DA31BD8D60900FD2DB4 /* UIImage+ImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ED00DA11BD8D60900FD2DB4 /* UIImage+ImageEffects.h */; };
-		3ED00DA41BD8D60900FD2DB4 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED00DA21BD8D60900FD2DB4 /* UIImage+ImageEffects.m */; };
+		3ED00DA41BD8D60900FD2DB4 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED00DA21BD8D60900FD2DB4 /* UIImage+ImageEffects.m */; platformFilter = ios; };
 		3ED00DA81BD8D78200FD2DB4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED00DA71BD8D78200FD2DB4 /* Accelerate.framework */; };
-		3ED8A878197DBDAE00069761 /* CardIOUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8A874197DBD5F00069761 /* CardIOUtilities.m */; };
+		3ED8A878197DBDAE00069761 /* CardIOUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8A874197DBD5F00069761 /* CardIOUtilities.m */; platformFilter = ios; };
 		3EE558981A5B4BC60094929A /* TestGeneratedModels.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3ED9F6DF1A23CDD800BD07F8 /* TestGeneratedModels.mm */; };
 		4358E6F91BFBBCBB007E07C3 /* CardIOCardholderNameTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4358E6F71BFBB35E007E07C3 /* CardIOCardholderNameTextFieldDelegate.m */; };
 		4358E6FA1BFBBCCC007E07C3 /* CardIOCardholderNameTextFieldDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4358E6F61BFBB35E007E07C3 /* CardIOCardholderNameTextFieldDelegate.h */; };
-		438FDD141BFD1BF3007DC6CB /* CardIOCardholderNameTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4358E6F71BFBB35E007E07C3 /* CardIOCardholderNameTextFieldDelegate.m */; };
+		438FDD141BFD1BF3007DC6CB /* CardIOCardholderNameTextFieldDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4358E6F71BFBB35E007E07C3 /* CardIOCardholderNameTextFieldDelegate.m */; platformFilter = ios; };
 		55CD7FA818EF777F00BB381A /* iccChoicesSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CD7FA718EF777F00BB381A /* iccChoicesSelectViewController.m */; };
-		92122C301B8C3865004D705E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C2F1B8C3865004D705E /* OpenGLES.framework */; };
-		92122C361B8C38E9004D705E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92263E311B84283D003FE678 /* UIKit.framework */; };
-		92122C391B8C393D004D705E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E119C8EBC50023CDBB /* CoreMedia.framework */; };
-		92122C3A1B8C394F004D705E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E319C8EBCB0023CDBB /* MobileCoreServices.framework */; };
-		92122C3B1B8C3957004D705E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB636AA1846C6A900F0527B /* AVFoundation.framework */; };
-		92122C3D1B8C395F004D705E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C3C1B8C395F004D705E /* QuartzCore.framework */; };
-		92122C3E1B8C396E004D705E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618DF19C8EBBD0023CDBB /* AudioToolbox.framework */; };
-		92122C401B8C3976004D705E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C3F1B8C3976004D705E /* Security.framework */; };
-		92122C411B8C3986004D705E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C311B8C3887004D705E /* CoreGraphics.framework */; };
-		92122C431B8C39D0004D705E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C421B8C39D0004D705E /* CoreVideo.framework */; };
+		92122C301B8C3865004D705E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C2F1B8C3865004D705E /* OpenGLES.framework */; platformFilter = ios; };
+		92122C361B8C38E9004D705E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92263E311B84283D003FE678 /* UIKit.framework */; platformFilter = ios; };
+		92122C391B8C393D004D705E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E119C8EBC50023CDBB /* CoreMedia.framework */; platformFilter = ios; };
+		92122C3A1B8C394F004D705E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E319C8EBCB0023CDBB /* MobileCoreServices.framework */; platformFilter = ios; };
+		92122C3B1B8C3957004D705E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB636AA1846C6A900F0527B /* AVFoundation.framework */; platformFilter = ios; };
+		92122C3D1B8C395F004D705E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C3C1B8C395F004D705E /* QuartzCore.framework */; platformFilter = ios; };
+		92122C3E1B8C396E004D705E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618DF19C8EBBD0023CDBB /* AudioToolbox.framework */; platformFilter = ios; };
+		92122C401B8C3976004D705E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C3F1B8C3976004D705E /* Security.framework */; platformFilter = ios; };
+		92122C411B8C3986004D705E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C311B8C3887004D705E /* CoreGraphics.framework */; platformFilter = ios; };
+		92122C431B8C39D0004D705E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C421B8C39D0004D705E /* CoreVideo.framework */; platformFilter = ios; };
 		92263DCE1B83AD65003FE678 /* CardIO.h in Headers */ = {isa = PBXBuildFile; fileRef = D1824381144CF73400829B91 /* CardIO.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92263DCF1B83AD6B003FE678 /* CardIOCreditCardInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D1824386144CF73400829B91 /* CardIOCreditCardInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92263DD01B83AD73003FE678 /* CardIOView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E583C2117BB03C900CB326A /* CardIOView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -222,18 +220,18 @@
 		929AD7811B8CA8FD00F6D18E /* CardIODetectionMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E587F8A18C7E165000C1D3A /* CardIODetectionMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		929AD7821B8CA8FD00F6D18E /* CardIOUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ED8A876197DBDA900069761 /* CardIOUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A50A54C51BE306DB00B669FB /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED00DA21BD8D60900FD2DB4 /* UIImage+ImageEffects.m */; };
-		A50A54C61BE3094500B669FB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED00DA71BD8D78200FD2DB4 /* Accelerate.framework */; };
-		A50A54C71BE3095000B669FB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED00DA71BD8D78200FD2DB4 /* Accelerate.framework */; };
-		A50A54C81BE3095C00B669FB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C421B8C39D0004D705E /* CoreVideo.framework */; };
-		A50A54C91BE3097F00B669FB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C2F1B8C3865004D705E /* OpenGLES.framework */; };
-		A50A54CA1BE3098700B669FB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E319C8EBCB0023CDBB /* MobileCoreServices.framework */; };
-		A50A54CB1BE3098E00B669FB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C311B8C3887004D705E /* CoreGraphics.framework */; };
-		A50A54CC1BE3099400B669FB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C3F1B8C3976004D705E /* Security.framework */; };
-		A50A54CD1BE3099C00B669FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618DF19C8EBBD0023CDBB /* AudioToolbox.framework */; };
-		A50A54CE1BE309A500B669FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C3C1B8C395F004D705E /* QuartzCore.framework */; };
-		A50A54CF1BE309AD00B669FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E119C8EBC50023CDBB /* CoreMedia.framework */; };
-		A50A54D01BE309B300B669FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92263E311B84283D003FE678 /* UIKit.framework */; };
-		A50A54D11BE309D700B669FB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB636AA1846C6A900F0527B /* AVFoundation.framework */; };
+		A50A54C61BE3094500B669FB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED00DA71BD8D78200FD2DB4 /* Accelerate.framework */; platformFilter = ios; };
+		A50A54C71BE3095000B669FB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED00DA71BD8D78200FD2DB4 /* Accelerate.framework */; platformFilter = ios; };
+		A50A54C81BE3095C00B669FB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C421B8C39D0004D705E /* CoreVideo.framework */; platformFilter = ios; };
+		A50A54C91BE3097F00B669FB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C2F1B8C3865004D705E /* OpenGLES.framework */; platformFilter = ios; };
+		A50A54CA1BE3098700B669FB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E319C8EBCB0023CDBB /* MobileCoreServices.framework */; platformFilter = ios; };
+		A50A54CB1BE3098E00B669FB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C311B8C3887004D705E /* CoreGraphics.framework */; platformFilter = ios; };
+		A50A54CC1BE3099400B669FB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C3F1B8C3976004D705E /* Security.framework */; platformFilter = ios; };
+		A50A54CD1BE3099C00B669FB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618DF19C8EBBD0023CDBB /* AudioToolbox.framework */; platformFilter = ios; };
+		A50A54CE1BE309A500B669FB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92122C3C1B8C395F004D705E /* QuartzCore.framework */; platformFilter = ios; };
+		A50A54CF1BE309AD00B669FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E9618E119C8EBC50023CDBB /* CoreMedia.framework */; platformFilter = ios; };
+		A50A54D01BE309B300B669FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92263E311B84283D003FE678 /* UIKit.framework */; platformFilter = ios; };
+		A50A54D11BE309D700B669FB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB636AA1846C6A900F0527B /* AVFoundation.framework */; platformFilter = ios; };
 		A50A54D21BE30A2800B669FB /* CardIODetectionMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E587F8A18C7E165000C1D3A /* CardIODetectionMode.h */; };
 		A50A54D31BE30A4200B669FB /* CardIOUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ED8A876197DBDA900069761 /* CardIOUtilities.h */; };
 		A50A54D41BE30AB300B669FB /* UIImage+ImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ED00DA11BD8D60900FD2DB4 /* UIImage+ImageEffects.h */; };
@@ -678,7 +676,7 @@
 		03EE575014EEBCB500CE3715 /* CardIOPaymentViewControllerContinuation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardIOPaymentViewControllerContinuation.h; path = Classes/CardIOPaymentViewControllerContinuation.h; sourceTree = "<group>"; };
 		03F8A48E1256AA4700AB3AF3 /* CardIOCGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCGGeometry.h; sourceTree = "<group>"; };
 		059C9C9F244452D200E1125D /* NSString+Bolt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Bolt.h"; path = "../bolt-ios-bml/bolt-bml/Classes/Categories/NSString+Bolt.h"; sourceTree = "<group>"; };
-		059C9CA0244452D200E1125D /* NSString+Bolt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Bolt.m"; path = "../bolt-ios-bml/bolt-bml/Classes/Categories/NSString+Bolt.m"; sourceTree = "<group>"; };
+		05C3B58C2448602D00850DE4 /* BoltAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = BoltAssets.xcassets; path = assets/BoltAssets.xcassets; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* iccAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iccAppDelegate.h; path = Classes/iccAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* iccAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iccAppDelegate.m; path = Classes/iccAppDelegate.m; sourceTree = "<group>"; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = Resources/MainWindow.xib; sourceTree = "<group>"; };
@@ -1007,7 +1005,6 @@
 			isa = PBXGroup;
 			children = (
 				059C9C9F244452D200E1125D /* NSString+Bolt.h */,
-				059C9CA0244452D200E1125D /* NSString+Bolt.m */,
 				D13A60C113D4BEBE00123D1A /* Formatters */,
 				032E4205134F784B00830810 /* Text field */,
 				030735EC1341614100663C26 /* Tableview */,
@@ -1099,6 +1096,7 @@
 		0320B2AA14352643003DF170 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05C3B58C2448602D00850DE4 /* BoltAssets.xcassets */,
 				2DF9307616557ED7000936BA /* CardIOBundle.h */,
 				2DF9307716557ED7000936BA /* CardIOBundle.m */,
 				031F127D132EC5CA00738505 /* CardIODevice.h */,
@@ -2178,7 +2176,6 @@
 					};
 					92263D6F1B83ACBB003FE678 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = TJ9Y2BHB87;
 					};
 					A553B6E51BE32273006DF551 = {
 						DevelopmentTeam = TJ9Y2BHB87;
@@ -2257,6 +2254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05C3B58E2448602D00850DE4 /* BoltAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2275,6 +2273,7 @@
 				A553B6F11BE32273006DF551 /* MainWindow~iPad.xib in Resources */,
 				A553B6F21BE32273006DF551 /* yellow_button@2x.png in Resources */,
 				A553B6F31BE32273006DF551 /* yak_icon@2x.png in Resources */,
+				05C3B58D2448602D00850DE4 /* BoltAssets.xcassets in Resources */,
 				A553B6F41BE32273006DF551 /* yak_icon.png in Resources */,
 				A553B6F51BE32273006DF551 /* yak_icon~ipad.png in Resources */,
 				A553B6F61BE32273006DF551 /* card_io_logo_black.png in Resources */,
@@ -2384,7 +2383,6 @@
 				3E9F4BE0181F03F300F33B48 /* CardIOVideoFrame.mm in Sources */,
 				3E9F4BE1181F03F300F33B48 /* CardIOGuideLayer.mm in Sources */,
 				3ED00DA41BD8D60900FD2DB4 /* UIImage+ImageEffects.m in Sources */,
-				059C9CA6244452D200E1125D /* NSString+Bolt.m in Sources */,
 				3E9F4BE2181F03F300F33B48 /* CardIOIplImage.mm in Sources */,
 				3E9F4BE3181F03F300F33B48 /* CardIOShutterView.m in Sources */,
 				3E9F4BE5181F03F300F33B48 /* CardIOViewController.mm in Sources */,
@@ -2435,7 +2433,6 @@
 				3E9F4C6C181F07B700F33B48 /* RootViewController.m in Sources */,
 				3E0133E7198AD75C009E579A /* main.m in Sources */,
 				55CD7FA818EF777F00BB381A /* iccChoicesSelectViewController.m in Sources */,
-				059C9CA5244452D200E1125D /* NSString+Bolt.m in Sources */,
 				3EE558981A5B4BC60094929A /* TestGeneratedModels.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2450,7 +2447,6 @@
 				92263E021B83AE19003FE678 /* CardIOVideoFrame.mm in Sources */,
 				92263E091B83AE1F003FE678 /* CardIOGuideLayer.mm in Sources */,
 				A50A54C51BE306DB00B669FB /* UIImage+ImageEffects.m in Sources */,
-				059C9CA4244452D200E1125D /* NSString+Bolt.m in Sources */,
 				92263E0E1B83AE29003FE678 /* CardIOIplImage.mm in Sources */,
 				92263E0B1B83AE1F003FE678 /* CardIOShutterView.m in Sources */,
 				92263DE01B83ADC0003FE678 /* CardIOViewController.mm in Sources */,
@@ -2501,7 +2497,6 @@
 				A553B7041BE32273006DF551 /* RootViewController.m in Sources */,
 				A553B7051BE32273006DF551 /* main.m in Sources */,
 				A553B7061BE32273006DF551 /* iccChoicesSelectViewController.m in Sources */,
-				059C9CA3244452D200E1125D /* NSString+Bolt.m in Sources */,
 				A553B7071BE32273006DF551 /* TestGeneratedModels.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2526,6 +2521,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54BA1BE2F7A800B669FB /* UnitTest_Debug.xcconfig */;
 			buildSettings = {
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Debug;
 		};
@@ -2533,6 +2529,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54BB1BE2F7A800B669FB /* UnitTest_Release.xcconfig */;
 			buildSettings = {
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = Release;
 		};
@@ -2540,6 +2537,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54B91BE2F7A800B669FB /* UnitTest_AdHoc.xcconfig */;
 			buildSettings = {
+				SUPPORTS_MACCATALYST = NO;
 			};
 			name = AdHoc;
 		};
@@ -2549,6 +2547,7 @@
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_CFLAGS = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = AdHoc;
 		};
@@ -2556,6 +2555,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54AF1BE2F7A800B669FB /* CardIO_Static_Library_Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
 		};
@@ -2563,6 +2566,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54B01BE2F7A800B669FB /* CardIO_Static_Library_Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PREPROCESSOR_DEFINITIONS = "CARDIO_DEBUG=0";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64 i386";
 			};
 			name = Release;
 		};
@@ -2570,6 +2578,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54AE1BE2F7A800B669FB /* CardIO_Static_Library_AdHoc.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64 i386";
 			};
 			name = AdHoc;
 		};
@@ -2598,8 +2610,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54BE1BE2FEEC00B669FB /* CardIO_Framework_Debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEVELOPMENT_TEAM = TJ9Y2BHB87;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64 i386";
 			};
 			name = Debug;
 		};
@@ -2607,8 +2625,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54BF1BE2FEEC00B669FB /* CardIO_Framework_Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEVELOPMENT_TEAM = TJ9Y2BHB87;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64 i386";
 			};
 			name = Release;
 		};
@@ -2616,8 +2640,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A50A54BD1BE2FEEC00B669FB /* CardIO_Framework_Adhoc.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				DEVELOPMENT_TEAM = TJ9Y2BHB87;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64 i386";
 			};
 			name = AdHoc;
 		};
@@ -2659,7 +2689,9 @@
 			baseConfigurationReference = A50A54B21BE2F7A800B669FB /* Debug.xcconfig */;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2669,6 +2701,7 @@
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_CFLAGS = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

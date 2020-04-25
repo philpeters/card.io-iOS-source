@@ -60,6 +60,9 @@ NSString * const CardIOScanningOrientationAnimationDuration = @"CardIOScanningOr
   if (self) {
     [self commonInit];
     self.backgroundColor = [UIColor clearColor];
+    if (@available(iOS 13.0, *)) {
+      self.backgroundColor = [UIColor systemGroupedBackgroundColor];
+    }
   }
   return self;
 }

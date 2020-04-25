@@ -16,6 +16,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window.backgroundColor = [UIColor whiteColor];  // otherwise, on iPad apparently defaults to {red:1 green:0.0471187 blue:0}
+  if (@available(iOS 13.0, *)) {
+    self.window.backgroundColor = [UIColor systemGroupedBackgroundColor];
+  }
+
   self.window.rootViewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
   [self.window addSubview:self.window.rootViewController.view];
   [self.window makeKeyAndVisible];

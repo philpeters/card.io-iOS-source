@@ -99,38 +99,38 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.navigationController.navigationBar.opaque = true;
-  self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+//  self.navigationController.navigationBar.opaque = true;
+//  self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  UIApplication *theApp = [UIApplication sharedApplication];
+//  UIApplication *theApp = [UIApplication sharedApplication];
 
   // Store the current state BEFORE calling super!
-  if(self.shouldStoreStatusBarStyle) {
-    self.originalStatusBarStyle = theApp.statusBarStyle;
-    self.statusBarWasOriginallyHidden = theApp.statusBarHidden;
-    self.shouldStoreStatusBarStyle = NO; // only store the very first time
-  }
-  
-  self.navigationBar.barStyle = self.context.navigationBarStyle;
-  if (iOS_7_PLUS) {
-    self.navigationBar.barTintColor = self.context.navigationBarTintColor;
-  }
-  else {
-    self.navigationBar.tintColor = self.context.navigationBarTintColor;
-  }
+//  if(self.shouldStoreStatusBarStyle) {
+//    self.originalStatusBarStyle = theApp.statusBarStyle;
+//    self.statusBarWasOriginallyHidden = theApp.statusBarHidden;
+//    self.shouldStoreStatusBarStyle = NO; // only store the very first time
+//  }
+//
+//  self.navigationBar.barStyle = self.context.navigationBarStyle;
+//  if (iOS_7_PLUS) {
+//    self.navigationBar.barTintColor = self.context.navigationBarTintColor;
+//  }
+//  else {
+//    self.navigationBar.tintColor = self.context.navigationBarTintColor;
+//  }
 
   [super viewWillAppear:animated];
-
-  if (self.modalPresentationStyle == UIModalPresentationFullScreen && !self.context.keepStatusBarStyle) {
-    if (iOS_7_PLUS) {
-      [theApp setStatusBarStyle:UIStatusBarStyleDefault animated:animated];
-    }
-    else {
-      [theApp setStatusBarStyle:UIStatusBarStyleLightContent animated:animated];
-    }
-  }
+//
+//  if (self.modalPresentationStyle == UIModalPresentationFullScreen && !self.context.keepStatusBarStyle) {
+//    if (iOS_7_PLUS) {
+//      [theApp setStatusBarStyle:UIStatusBarStyleDefault animated:animated];
+//    }
+//    else {
+//      [theApp setStatusBarStyle:UIStatusBarStyleLightContent animated:animated];
+//    }
+//  }
   
   // Write console message for confused developers who have given us confusing directives
   if (self.suppressScanConfirmation && (self.collectExpiry || self.collectCVV || self.collectPostalCode || self.collectCardholderName)) {
@@ -179,11 +179,11 @@
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   if (self.modalPresentationStyle == UIModalPresentationFullScreen) {
-    [[UIApplication sharedApplication] setStatusBarStyle:self.originalStatusBarStyle animated:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:self.statusBarWasOriginallyHidden withAnimation:UIStatusBarAnimationFade];
-    if (iOS_7_PLUS) {
-      [self setNeedsStatusBarAppearanceUpdate];
-    }
+//    [[UIApplication sharedApplication] setStatusBarStyle:self.originalStatusBarStyle animated:animated];
+//    [[UIApplication sharedApplication] setStatusBarHidden:self.statusBarWasOriginallyHidden withAnimation:UIStatusBarAnimationFade];
+//    if (iOS_7_PLUS) {
+//      [self setNeedsStatusBarAppearanceUpdate];
+//    }
   }
 }
 

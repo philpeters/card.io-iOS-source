@@ -416,7 +416,7 @@ NSString *CardIOLocalizedString(NSString *key,
 #if CARDIO_DEBUG
   return CardIOLocalizedStringWithAlert(key, languageOrLocale, true);
 #else
-  return key.localise;
+  return [NSString stringWithFormat:@"scanner.%@", key].localise;
 //  return CardIOLocalizedStringWithAlert(key, languageOrLocale, false);
 #endif
 }

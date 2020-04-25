@@ -88,14 +88,14 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.navigationController.navigationBar.opaque = true;
-  self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+//  self.navigationController.navigationBar.opaque = true;
+//  self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
 
-    self.automaticallyAdjustsScrollViewInsets = YES;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = YES;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
 
   CardIOPaymentViewController *pvc = (CardIOPaymentViewController *)self.navigationController;
-  self.title = @"Card Details";
+  self.title = CardIOLocalizedString(@"card_details_title", self.context.languageOrLocale);
   //CardIOLocalizedString(@"entry_title", self.context.languageOrLocale); // Enter card info
 
   // Need to set up the navItem here, because the OS calls the accessor before all the info needed to build it is available.
@@ -125,7 +125,7 @@
   [self.doneButton setTitle:@"Next" forState:UIControlStateNormal];
   [self.doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [self.doneButton addTarget:self action:@selector(done) forControlEvents:UIControlEventTouchUpInside];
-  [self.doneButton setBackgroundColor: [UIColor redColor]];
+  [self.doneButton setBackgroundColor: [CardIOTableViewCell errorColor]];
   self.doneButton.enabled = false;
   
   self.collectExpiry = pvc.collectExpiry;
@@ -138,13 +138,9 @@
 
   if(!self.manualEntry) {
     self.cardView = [[UIImageView alloc] initWithImage:self.cardImage];
-//    self.cardView.bounds = CGRectZeroWithSize(CGSizeMake((CGFloat)ceil(self.floatingCardView.bounds.size.width),
-//                                                         (CGFloat)ceil(self.floatingCardView.bounds.size.height)));
     self.cardView.contentMode = UIViewContentModeScaleAspectFill;
     self.cardView.backgroundColor = kColorViewBackground;
     self.cardView.layer.masksToBounds = YES;
-//    self.cardView.layer.borderColor = [UIColor grayColor].CGColor;
-//    self.cardView.layer.borderWidth = 2.0f;
 
     self.cardView.hidden = NO;
     [self.scrollView addSubview:self.cardView];
@@ -241,7 +237,7 @@
       if(self.cardInfo.expiryMonth > 0 && self.cardInfo.expiryYear > 0) {
         self.expiryTextField.text = [self.expiryTextFieldDelegate.formatter stringForObjectValue:self.cardInfo];
         if (![[self class] cardExpiryIsValid:self.cardInfo]) {
-          self.expiryTextField.textColor = [UIColor redColor];
+          self.expiryTextField.textColor = [CardIOTableViewCell errorColor];
         }
       }
     }
@@ -360,13 +356,21 @@
   [self.scrollView addSubview:self.tableView];
 
   if (iOS_7_PLUS) {
-    self.leftTableBorderForIOS7 = [[UIView alloc] init];
-    self.leftTableBorderForIOS7.backgroundColor = [UIColor colorWithWhite:kiOS7TableViewBorderColor alpha:1];
-    self.leftTableBorderForIOS7.hidden = YES;
-    [self.scrollView addSubview:self.leftTableBorderForIOS7];
+//    self.leftTableBorderForIOS7 = [[UIView alloc] init];
+//    self.leftTableBorderForIOS7.backgroundColor = [UIColor clearColor];
+////    self.leftTableBorderForIOS7.backgroundColor = [UIColor colorWithWhite:kiOS7TableViewBorderColor alpha:1];
+////    if (@available(iOS 13.0, *)) {
+////      self.leftTableBorderForIOS7.backgroundColor = [UIColor separatorColor];
+////    }
+//
+//    self.leftTableBorderForIOS7.hidden = YES;
+//    [self.scrollView addSubview:self.leftTableBorderForIOS7];
 
     self.rightTableBorderForIOS7 = [[UIView alloc] init];
     self.rightTableBorderForIOS7.backgroundColor = [UIColor colorWithWhite:kiOS7TableViewBorderColor alpha:1];
+    if (@available(iOS 13.0, *)) {
+      self.rightTableBorderForIOS7.backgroundColor = [UIColor separatorColor];
+    }
     self.rightTableBorderForIOS7.hidden = YES;
     [self.scrollView addSubview:self.rightTableBorderForIOS7];
   }
@@ -549,6 +553,9 @@
     self.doneButton.frame = CGRectMake(0, MAX(CGRectGetMaxY(self.tableView.frame), CGRectGetMaxY(self.cardView.frame) + 20), self.view.frame.size.width, self.doneButton.frame.size.height);
   }
   
+  if (@available(iOS 13.0, *)) {
+      self.view.backgroundColor = [UIColor systemGroupedBackgroundColor];
+  }
 }
 
 
@@ -648,7 +655,7 @@
   } else if ([self.cardInfo.cardNumber length] > 0 &&
              ((cardType == CardIOCreditCardTypeUnrecognized && [self.cardInfo.cardNumber length] == 16) ||
               self.cardInfo.cardNumber.length == [CardIOCreditCardNumber numberLengthForCardNumber:self.cardInfo.cardNumber])) {
-               self.numberTextField.textColor = [UIColor redColor];
+               self.numberTextField.textColor = [CardIOTableViewCell errorColor];
              } else {
                self.numberTextField.textColor = [CardIOTableViewCell defaultDetailTextLabelColorForCellStyle:[CardIOTableViewCell defaultCellStyle]];
              }
@@ -701,7 +708,7 @@
     }
     self.expiryTextField.textColor = [CardIOTableViewCell defaultDetailTextLabelColorForCellStyle:[CardIOTableViewCell defaultCellStyle]];
   } else if(self.expiryTextField.text.length >= 7) {
-    self.expiryTextField.textColor = [UIColor redColor];
+    self.expiryTextField.textColor = [CardIOTableViewCell errorColor];
   } else {
     self.expiryTextField.textColor = [CardIOTableViewCell defaultDetailTextLabelColorForCellStyle:[CardIOTableViewCell defaultCellStyle]];
   }
@@ -727,7 +734,7 @@
   if([CardIOCVVTextFieldDelegate isValidCVV:self.cardInfo.cvv forNumber:self.cardInfo.cardNumber]) {
     self.cvvTextField.textColor = [CardIOTableViewCell defaultDetailTextLabelColorForCellStyle:[CardIOTableViewCell defaultCellStyle]];
   } else if(self.cvvTextField.text.length > [self cvvLength]) {
-    self.cvvTextField.textColor = [UIColor redColor];
+    self.cvvTextField.textColor = [CardIOTableViewCell errorColor];
   } else {
     self.cvvTextField.textColor = [CardIOTableViewCell defaultDetailTextLabelColorForCellStyle:[CardIOTableViewCell defaultCellStyle]];
   }
@@ -758,7 +765,7 @@
     self.cardholderNameTextField.textColor = [CardIOTableViewCell defaultDetailTextLabelColorForCellStyle:[CardIOTableViewCell defaultCellStyle]];
   } else if(self.cardholderNameTextField.text.length >= 175) {
     // probably won't reach this case, since length == 175 is the only validation rule, but we'll leave it here for consitency and for future enhancements.
-    self.cardholderNameTextField.textColor = [UIColor redColor];
+    self.cardholderNameTextField.textColor = [CardIOTableViewCell errorColor];
   } else {
     self.cardholderNameTextField.textColor = [CardIOTableViewCell defaultDetailTextLabelColorForCellStyle:[CardIOTableViewCell defaultCellStyle]];
   }
@@ -781,16 +788,16 @@
   [UIView animateWithDuration:0.4 animations:^{
     if (!numberIsValid) {
       [_self.doneButton setTitle:CardIOLocalizedString(@"scan_button_pan", self.context.languageOrLocale) forState:UIControlStateNormal];
-      [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
+      [_self.doneButton setBackgroundColor:[CardIOTableViewCell errorButtonColor]];
     } else if (!expiryIsValid) {
       [_self.doneButton setTitle:CardIOLocalizedString(@"scan_button_expiry", self.context.languageOrLocale) forState:UIControlStateNormal];
-      [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
+      [_self.doneButton setBackgroundColor:[CardIOTableViewCell errorButtonColor]];
     } else if (!cvvIsValid) {
       [_self.doneButton setTitle:CardIOLocalizedString(@"scan_button_cvv", self.context.languageOrLocale) forState:UIControlStateNormal];
-      [_self.doneButton setBackgroundColor:[UIColor colorWithRed:254.0/255 green:56.0/255 blue:36.0/255 alpha:1]];
+      [_self.doneButton setBackgroundColor:[CardIOTableViewCell errorButtonColor]];
     } else {
       [_self.doneButton setTitle:CardIOLocalizedString(@"scan_button_next", self.context.languageOrLocale) forState:UIControlStateNormal];
-      [_self.doneButton setBackgroundColor:isValid ? [UIColor colorWithRed:0 green:118.0f/255 blue:1 alpha:1] : [UIColor colorWithRed:166.0f/255 green:171.0f/255 blue:177.0f/255 alpha:1]];
+      [_self.doneButton setBackgroundColor:isValid ? [CardIOTableViewCell readyButtonColor] : [CardIOTableViewCell disabledButtonColor]];
     }
   }];
   

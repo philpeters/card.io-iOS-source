@@ -80,12 +80,21 @@
   switch(cellStyle) {
     case UITableViewCellStyleDefault:
       defaultColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
+      if (@available(iOS 13.0, *)) {
+        defaultColor= [UIColor labelColor];
+      }
       break;
     case UITableViewCellStyleSubtitle:
       defaultColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
+      if (@available(iOS 13.0, *)) {
+        defaultColor= [UIColor labelColor];
+      }
       break;
     case UITableViewCellStyleValue1:
       defaultColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
+      if (@available(iOS 13.0, *)) {
+        defaultColor= [UIColor labelColor];
+      }
       break;
 //    case UITableViewCellStyleValue2:
 ////      defaultColor = [UIColor colorWithRed:0.22f green:0.33f blue:0.53f alpha:1.0f];
@@ -93,6 +102,10 @@
 //      break;
     default:
       defaultColor = [UIColor darkGrayColor];
+      if (@available(iOS 13.0, *)) {
+        defaultColor= [UIColor secondaryLabelColor];
+      }
+
       break;
   }
   return defaultColor;
@@ -106,12 +119,21 @@
 //      break;
     case UITableViewCellStyleSubtitle:
       defaultColor = [UIColor colorWithRed:0.5f green:0.5f blue:0.5f alpha:1.0f];
+      if (@available(iOS 13.0, *)) {
+        defaultColor= [UIColor tertiaryLabelColor];
+      }
       break;
     case UITableViewCellStyleValue1:
       defaultColor = [UIColor colorWithRed:0.22f green:0.33f blue:0.53f alpha:1.0f];
+      if (@available(iOS 13.0, *)) {
+        defaultColor= [UIColor secondaryLabelColor];
+      }
       break;
     case UITableViewCellStyleValue2:
       defaultColor = [UIColor colorWithWhite:0.0f alpha:1.0f];
+      if (@available(iOS 13.0, *)) {
+        defaultColor= [UIColor labelColor];
+      }
       break;
     default:
       defaultColor = [UIColor darkTextColor];
@@ -122,6 +144,32 @@
 
 + (UITableViewCellStyle) defaultCellStyle {
   return UITableViewCellStyleValue2;
+}
+
+
++ (UIColor *) errorColor {
+  NSBundle * bundle =  [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BoltBml" ofType:@"bundle"]];;
+  
+  return [UIColor colorNamed:@"color-danger" inBundle:bundle compatibleWithTraitCollection:nil];
+}
+
++ (UIColor *) errorButtonColor {
+  NSBundle * bundle =  [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BoltBml" ofType:@"bundle"]];;
+  
+  return [UIColor colorNamed:@"color-danger" inBundle:bundle compatibleWithTraitCollection:nil];
+
+}
+
++ (UIColor *) readyButtonColor {
+  NSBundle * bundle =  [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BoltBml" ofType:@"bundle"]];;
+  
+  return [UIColor colorNamed:@"color-tint" inBundle:bundle compatibleWithTraitCollection:nil];
+}
+
++ (UIColor *) disabledButtonColor {
+  NSBundle * bundle =  [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BoltBml" ofType:@"bundle"]];;
+  
+  return [UIColor colorNamed:@"color-disabled" inBundle:bundle compatibleWithTraitCollection:nil];
 }
 
 @end

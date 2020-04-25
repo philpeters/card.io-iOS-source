@@ -37,31 +37,22 @@
 }
 
 + (UIImage *)logoForCardType:(CardIOCreditCardType)cardType {
-  UIImage   *logo = nil;
-  NSString  *imageName = nil;
+  NSBundle * bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BoltBml" ofType:@"bundle"]];
+  
   switch (cardType) {
     case CardIOCreditCardTypeAmex:
-      imageName = @"icon_amex_large.png";
-      break;
+      return [UIImage imageNamed:@"cardAMEX" inBundle:bundle compatibleWithTraitCollection:nil];
     case CardIOCreditCardTypeJCB:
-      imageName = @"icon_jcb_large.png";
-      break;
+      return [UIImage imageNamed:@"cardJCB" inBundle:bundle compatibleWithTraitCollection:nil];
     case CardIOCreditCardTypeVisa:
-      imageName = @"icon_visa_large.png";
-      break;
+      return [UIImage imageNamed:@"cardVISA" inBundle:bundle compatibleWithTraitCollection:nil];
     case CardIOCreditCardTypeMastercard:
-      imageName = @"icon_mastercard_large.png";
-      break;
+      return [UIImage imageNamed:@"cardMASTERCARD" inBundle:bundle compatibleWithTraitCollection:nil];
     case CardIOCreditCardTypeDiscover:
-      imageName = @"icon_discover.png";
-      break;
+      return [UIImage imageNamed:@"cardDISCOVER" inBundle:bundle compatibleWithTraitCollection:nil];
     default:
-      break;
+      return nil;
   }
-  if ([imageName length]) {
-    logo = [[CardIOBundle sharedInstance] imageNamed:[NSString stringWithFormat:@"CreditCardLogos/%@", imageName]];
-  }
-  return logo;
 }
 
 - (NSString *)redactedCardNumber {

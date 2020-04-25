@@ -82,11 +82,13 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.title = @"Scan Card";
+  self.title = CardIOLocalizedString(@"scan_card_title", self.context.languageOrLocale);
   self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
   self.view.backgroundColor = [UIColor whiteColor];
-  //[UIColor colorWithWhite:0.15f alpha:1.0f];
+  if (@available(iOS 13.0, *)) {
+    self.view.backgroundColor = [UIColor systemGroupedBackgroundColor];
+  }
 
   CGRect cardIOViewFrame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
   cardIOViewFrame = CGRectRoundedToNearestPixel(cardIOViewFrame);
@@ -121,30 +123,12 @@
     _manualEntryButtonFrameSize = self.manualEntryButton.frame.size;
     [self.view addSubview:self.manualEntryButton];
   }
-
-  // Add shadow to camera preview
-//  _shadowLayer = [CALayer layer];
-//  self.shadowLayer.shadowRadius = kDropShadowRadius;
-//  self.shadowLayer.shadowColor = [UIColor blackColor].CGColor;
-//  self.shadowLayer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-//  self.shadowLayer.shadowOpacity = 0.5f;
-//  self.shadowLayer.masksToBounds = NO;
-//  [self.cardIOView.layer insertSublayer:self.shadowLayer atIndex:0]; // must go *behind* everything
 }
 
 - (void)viewWillLayoutSubviews {
   [super viewWillLayoutSubviews];
 
   self.cardIOView.frame = self.view.bounds;
-
-  // Only muck around with the status bar at all if we're in full screen modal style
-//  if (self.navigationController.modalPresentationStyle == UIModalPresentationFullScreen
-//      && [CardIOMacros appHasViewControllerBasedStatusBar]
-//      && !self.statusBarWasOriginallyHidden) {
-//
-//    self.changeStatusBarHiddenStatus = NO;//YES;
-//    self.newStatusBarHiddenStatus = NO;//YES;
-//  }
 }
 
 - (void)viewDidLayoutSubviews {
@@ -207,50 +191,28 @@
 - (UIButton *)makeButtonWithTitle:(NSString *)title withSelector:(SEL)selector {
   UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 
-  [button setTitleColor:[UIColor colorWithRed:0 green:118.0/255.0 blue:1 alpha:1] forState:UIControlStateNormal];
+  [button setTitleColor:[UIView appearance].tintColor forState:UIControlStateNormal];
   [button setTitle:title forState:UIControlStateNormal];
   button.titleLabel.font = [UIFont systemFontOfSize:17.0f];
   
-//  NSMutableDictionary *attributes = [@{
-//                                       NSStrokeWidthAttributeName : [NSNumber numberWithFloat:-1.0f]   // negative value => do both stroke & fill
-//                                       } mutableCopy];
-//
-////  attributes[NSFontAttributeName] = [UIFont boldSystemFontOfSize:18.0f];
-//  attributes[NSFontAttributeName] = [UIFont systemFontOfSize:17.0f];
-////  attributes[NSForegroundColorAttributeName] = [UIColor colorWithWhite:1.0f alpha:0.8f];
-//  [button setAttributedTitle:[[NSAttributedString alloc] initWithString:title attributes:attributes] forState:UIControlStateNormal];
-//
-////  attributes[NSForegroundColorAttributeName] = [UIColor whiteColor];
-//  [button setAttributedTitle:[[NSAttributedString alloc] initWithString:title attributes:attributes] forState:UIControlStateHighlighted];
-//
-//  CGSize buttonTitleSize = [button.titleLabel.attributedText size];
-//#ifdef __LP64__
-//  buttonTitleSize.height = ceil(buttonTitleSize.height);
-//  buttonTitleSize.width = ceil(buttonTitleSize.width);
-//#else
-//  buttonTitleSize.height = ceilf(buttonTitleSize.height);
-//  buttonTitleSize.width = ceilf(buttonTitleSize.width);
-//#endif
-//  button.bounds = CGRectMake(0, 0, buttonTitleSize.width + kButtonSizeOutset, buttonTitleSize.height + kButtonSizeOutset);
-
   [button addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
 
   return button;
 }
 
 #pragma mark - View Controller orientation
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-  return [self.navigationController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
-}
-
-- (BOOL)shouldAutorotate {
-  return [self.navigationController shouldAutorotate];
-}
-
-- (NSUInteger)supportedInterfaceOrientations {
-  return [self.navigationController supportedInterfaceOrientations];
-}
+//
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+//  return [self.navigationController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
+//}
+//
+//- (BOOL)shouldAutorotate {
+//  return [self.navigationController shouldAutorotate];
+//}
+//
+//- (NSUInteger)supportedInterfaceOrientations {
+//  return [self.navigationController supportedInterfaceOrientations];
+//}
 
 #pragma mark - Button orientation
 
@@ -338,7 +300,7 @@
 
   if (self.manualEntryButton) {
     self.manualEntryButton.transform = CGAffineTransformIdentity;
-    self.manualEntryButton.frame = CGRectMake(0, self.view.frame.size.height - 44, self.view.frame.size.width, 44);
+    self.manualEntryButton.frame = CGRectMake(0, self.view.frame.size.height - 44 - (self.view.safeAreaInsets.bottom), self.view.frame.size.width, 44);
 //    self.manualEntryButton.frame = CGRectWithXYAndSize(CGRectGetMaxX(cameraPreviewFrame) - self.manualEntryButtonFrameSize.width - 5.0f,
 //                                                       CGRectGetMaxY(cameraPreviewFrame) - self.manualEntryButtonFrameSize.height - 5.0f,
 //                                                       self.manualEntryButtonFrameSize);
@@ -424,9 +386,9 @@
 //  }
 }
 
-- (UIStatusBarStyle) preferredStatusBarStyle {
-  return UIStatusBarStyleLightContent;
-}
+//- (UIStatusBarStyle) preferredStatusBarStyle {
+//  return UIStatusBarStyleLightContent;
+//}
 
 #pragma mark - Handle button taps
 
@@ -521,64 +483,11 @@
       mostImportantWindow = [[[UIApplication sharedApplication] windows] lastObject];
     }
     dataEntryViewController.priorKeyWindow = mostImportantWindow;
-//
-//    UIWindow *floatingCardWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    floatingCardWindow = nil;
-//    floatingCardWindow.opaque = NO;
-//    floatingCardWindow.backgroundColor = [UIColor clearColor];
-//
-//    UIImageView *floatingCardView = [[UIImageView alloc] initWithImage:cardIOView.transitionView.cardView.image];
-//    floatingCardView = nil;
-//    floatingCardView.bounds = CGRectZeroWithSize(dataEntryViewController.cardImageSize);
-//    floatingCardView.center = [floatingCardWindow convertPoint:cardIOView.transitionView.cardView.center fromView:[cardIOView.transitionView.cardView superview]];
-//    floatingCardView.contentMode = UIViewContentModeScaleAspectFit;
-//    floatingCardView.backgroundColor = [UIColor blackColor];
-//    floatingCardView.layer.cornerRadius = ((CGFloat) 9.0f) * (floatingCardView.bounds.size.width / ((CGFloat) 300.0f)); // matches the card, adjusted for view size. (view is ~300 px wide on phone.)
-//    floatingCardView.layer.masksToBounds = YES;
-//    floatingCardView.layer.borderColor = [UIColor grayColor].CGColor;
-//    floatingCardView.layer.borderWidth = 2.0f;
-//    floatingCardView.transform = CGAffineTransformMakeRotation(orientationToRotation(self.interfaceOrientation));
-//    floatingCardView.hidden = cardIOView.transitionView.hidden;
-//
-//    [floatingCardWindow addSubview:floatingCardView];
-//
-//    // this is all that is needed to display a window. makeKeyAndVisible: causes all kinds of havoc that doesn't get cleared until after the app is killed.
-//    floatingCardWindow.hidden = NO;
-
-//    dataEntryViewController.floatingCardView = floatingCardView;
-//    dataEntryViewController.floatingCardWindow = floatingCardWindow;
 
     CardIOPaymentViewController *root = (CardIOPaymentViewController *)self.navigationController;
     root.currentViewControllerIsDataEntry = YES;
     root.initialInterfaceOrientationForViewcontroller = (UIInterfaceOrientation)self.deviceOrientation;
-
-    if (iOS_8_PLUS) {
-      // The presentViewController:/dismissViewControllerAnimated: kludge was necessary for
-      // some edge case that I can currently neither recall nor reproduce.
-      // In any case, though, the kludge crashes on iOS 8 Beta 2.
-      // So, at least for the moment, avoid it in iOS 8!
-      [root pushViewController:dataEntryViewController animated:YES];
-      //
-      // 17 Sep 2014 further notes:
-      // Can prevent the iOS 8 crash by adding `dispatch_after` as follows:
-      //      [self.navigationController presentViewController:[[UIViewController alloc] init] animated:NO completion:^{
-      //        dispatch_after(0, dispatch_get_main_queue(), ^{
-      //          [self.navigationController dismissViewControllerAnimated:NO completion:^{
-      //            [root pushViewController:dataEntryViewController animated:NO];
-      //          }];
-      //        });
-      //      }];
-      // However, this results in some ugly flashiness. (Even uglier on iOS 7 than on iOS 8.)
-      // So, for now, let's just wait and see whether that mysterious orientation-related edge case turns up someday under iOS 8.
-    }
-    else {
-      // Force the system to again ask CardIOPaymentViewController for its preferred orientation
-      [self.navigationController presentViewController:[[UIViewController alloc] init] animated:NO completion:^{
-        [self.navigationController dismissViewControllerAnimated:NO completion:^{
-          [root pushViewController:dataEntryViewController animated:NO];
-        }];
-      }];
-    }
+    [root pushViewController:dataEntryViewController animated:YES];
   }
 }
 

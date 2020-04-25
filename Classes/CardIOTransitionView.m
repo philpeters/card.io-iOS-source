@@ -43,6 +43,9 @@
 
     _whiteView = [[UIView alloc] init];
     _whiteView.backgroundColor = [UIColor whiteColor];
+    if (@available(iOS 13.0, *)) {
+      _whiteView.backgroundColor = [UIColor systemGroupedBackgroundColor];
+    }
     _whiteView.alpha = 0.0f;
     [self addSubview:_whiteView];
 
